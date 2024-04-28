@@ -9,6 +9,14 @@ def leer_periodos():
         for row in reader:
             periodos[row['Clave']] = [row['P1'], row['P2'], row['P3']]
     return periodos
+# El resultado es un diccionario con las claves de los cursos y los periodos disponibles
+# ['X', 'X', '']
+# ['', 'X', '']
+# ['X', '', '']
+# ['', 'X', 'X']
+# ['X', '', '']
+# ['', 'X', '']
+# ['', '', 'X']
 
 # leer profesores y materias de Profesores y Materias.csv
 def leer_profesores_materias():
@@ -19,6 +27,10 @@ def leer_profesores_materias():
             #Victor Manion,Juan Alvarado,Roberto Leyva,Mauricio Paletta,Yerly Flores,Jaime Lopez,Jorge Rodriguez,Jose Aguilera,Luis Guadarrama,Pedro Hernandez,Maria Mirafuentes,Roberto Vera,Octavio Silva,Fernando Ruiz,Ivan Olmos,Israel Tabarez
             profesores_materias[row['Clave']] = [row['Victor Manion'], row['Juan Alvarado'], row['Roberto Leyva'], row['Mauricio Paletta'], row['Yerly Flores'], row['Jaime Lopez'], row['Jorge Rodriguez'], row['Jose Aguilera'], row['Luis Guadarrama'], row['Pedro Hernandez'], row['Maria Mirafuentes'], row['Roberto Vera'], row['Octavio Silva'], row['Fernando Ruiz'], row['Ivan Olmos'], row['Israel Tabarez']]
     return profesores_materias
+# El resultado es un diccionario con las claves de los cursos y los profesores disponibles
+# ['X', '', '', 'X', '', '', '', '', '', '', '', '', '', '', '', '']
+# ['', 'X', '', '', '', '', '', 'X', '', 'X', '', '', '', '', '', '']
+
 
 def generar_cromosomas():
     cromosoma = []
@@ -39,7 +51,7 @@ def generar_cromosomas():
         # generar grupos
         for i in range(curso['# GPOs']):
             grupo = i + 1
-            
+
             # periodos
             periodos_curso = periodos[curso['CLAVE']]
             print(periodos_curso)
