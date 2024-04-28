@@ -1,0 +1,27 @@
+﻿Clave,Nombre,UDC,P1,P2,P3,Semestre,Horas
+TC1027,Programación para negocios,1,,X,,1,20
+TC1028,Pensamiento computacional para ingeniería,2,X,X,,1,40
+TC1029,Pensamiento computacional y programación,3,X,X,X,1,60
+TC1030,Programación orientada a objetos,1,,,X,2,20
+TC1031,Programación de estructuras de datos y algoritmos fundamentales,3,X,X,X,3,60
+TC1032,Modelación de sistemas mínimos y arquitecturas computacionales,1,,X,,3,20
+TC1033,Pensamiento computacional orientado a objetos,1,,,X,1,20
+TC1001B,Principios de programación para las ciencias sociales,3,,,X,1,60
+TC1002B,Herramientas Tecnológicas para Ciencias Sociales,3,,X,,4,60
+TC1003B,Modelación de la ingeniería con matemática computacional,3,X,,,2,60
+TC1004B,Implementación de internet de las cosas,6,,X,X,3,120
+TC2037,Implementación de métodos computacionales,3,X,X,X,4,60
+TC2038,Análisis y diseño de algoritmos avanzados,3,X,X,X,5,60
+TC2005B,Construcción de software y toma de decisiones,8,X,X,,4,160
+TC2006B,Interconexión de dispositivos,4,,,X,4,80
+TC2007B,Integración de seguridad informática en redes y sistemas de software,8,X,X,,5,160
+TC2008B,Modelación de sistemas multiagentes con gráficas computacionales,4,,,X,5,80
+TC3001B,Desarrollo de software,18,X,X,X,6,360
+TC3002B,Desarrollo de aplicaciones avanzadas de ciencias computacionales,6,,X,,8,120
+TC3003B,Implementación de redes de área amplia y servicios distribuidos,6,,,X,8,120
+TC3004B,Planeación de sistemas de software,6,X,,,8,120
+TC3005B,Desarrollo e implantación de sistemas de software,12,,X,X,8,240
+TI1015,Análisis de requerimientos de software,1,,,X,3,20
+TI3001C,Analítica de datos y herramientas de inteligencia artificial I,7,X,X,X,7,140
+TI3002C,Analítica de datos y herramientas de inteligencia artificial II,13,X,X,X,7,260
+TI3005B,Trasformación digital de organizaciones de la sociedad civil,6,X,,,8,120
