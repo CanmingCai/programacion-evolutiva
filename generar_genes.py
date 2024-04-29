@@ -1,6 +1,9 @@
 import csv
 import random
 
+lista_profesor_materia = ['Victor Manion', 'Juan Alvarado', 'Roberto Leyva', 'Mauricio Paletta', 'Yerly Flores', 'Jaime Lopez', 'Jorge Rodriguez', 'Jose Aguilera', 'Luis Guadarrama', 'Pedro Hernandez', 'Maria Mirafuentes', 'Roberto Vera', 'Octavio Silva', 'Fernando Ruiz', 'Ivan Olmos', 'Israel Tabarez']
+lista_bloque = ["TC1001B-Profesores.csv", "TC1002B-Profesores.csv", "TC1004B-Profesores.csv", "TC2005B-Profesores.csv", "TC2006B-Profesores.csv", "TC2007B-Profesores.csv", "TC2008B-Profesores.csv", "TC3002B-Profesores.csv", "TC3003B-Profesores.csv", "TC3004B-Profesores.csv", "TC3005B-Profesores.csv", "TI3005B-Profesores.csv"]
+
 # leer periodos de UDF.csv
 def leer_periodos():
     periodos = {}
@@ -24,12 +27,20 @@ def leer_profesores_materias():
     with open('Profesores y Materias.csv', newline='', encoding='utf-8-sig') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            #Victor Manion,Juan Alvarado,Roberto Leyva,Mauricio Paletta,Yerly Flores,Jaime Lopez,Jorge Rodriguez,Jose Aguilera,Luis Guadarrama,Pedro Hernandez,Maria Mirafuentes,Roberto Vera,Octavio Silva,Fernando Ruiz,Ivan Olmos,Israel Tabarez
             profesores_materias[row['Clave']] = [row['Victor Manion'], row['Juan Alvarado'], row['Roberto Leyva'], row['Mauricio Paletta'], row['Yerly Flores'], row['Jaime Lopez'], row['Jorge Rodriguez'], row['Jose Aguilera'], row['Luis Guadarrama'], row['Pedro Hernandez'], row['Maria Mirafuentes'], row['Roberto Vera'], row['Octavio Silva'], row['Fernando Ruiz'], row['Ivan Olmos'], row['Israel Tabarez']]
     return profesores_materias
 # El resultado es un diccionario con las claves de los cursos y los profesores disponibles
 # ['X', '', '', 'X', '', '', '', '', '', '', '', '', '', '', '', '']
 # ['', 'X', '', '', '', '', '', 'X', '', 'X', '', '', '', '', '', '']
+
+def leer_bloques(file):
+    profesores_bloques = {}
+    with open(file, newline='', encoding='utf-8-sig') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            profesores_bloques[row['Tema']] = [row['Victor Manion'], row['Juan Alvarado'], row['Roberto Leyva'], row['Mauricio Paletta'], row['Yerly Flores'], row['Jaime Lopez'], row['Jorge Rodriguez'], row['Jose Aguilera'], row['Luis Guadarrama'], row['Pedro Hernandez'], row['Maria Mirafuentes'], row['Roberto Vera'], row['Octavio Silva'], row['Fernando Ruiz'], row['Ivan Olmos'], row['Israel Tabarez']]
+    return profesores_bloques
+
 
 
 def generar_cromosomas():
@@ -47,7 +58,6 @@ def generar_cromosomas():
 
     # generar cantidad de grupos por curso
     for curso in cursos:
-
         # generar grupos
         for i in range(curso['# GPOs']):
             grupo = i + 1
@@ -62,21 +72,48 @@ def generar_cromosomas():
             periodo = ','.join(periodos_disponibles) if periodos_disponibles else 'N/A'
 
             # agregar profesor
-            # si el ultimo elemento de CLAVE no es B(bloque), agregar profesor en el archivo Profesores y Materias.csv
-            if curso['CLAVE'][-1] != 'B':
-                # open Profesores y Materias.csv
-                for clave, profesor in profesores_materias.items():
-                    if clave == curso['CLAVE']:
-                        print(profesor)
-                        # Add your code here to handle the 'profesor' variable
+            # si el clave del curso esta en el diccionario de profesores_materias
+            if curso['CLAVE'] in profesores_materias:
+                profesor_disponible = []
+                for j, profesor in enumerate(profesores_materias[curso['CLAVE']]):
+                    if profesor == 'X':
+                        # obtener nombre del profesor de la lista de profesores
+                        profesor_disponible.append(lista_profesor_materia[j])
+                profesor = random.choice(profesor_disponible) if profesor_disponible else 'N/A'
+                UF = curso['CLAVE']
 
-            gen = {'UF': [curso['CLAVE'], grupo], 
-                   'Periodo': periodo}
-            cromosoma.append(gen)
+                gen = {'UF': [UF, grupo], 
+                    'Periodo': periodo, 
+                    'Profesor': profesor}  
+                cromosoma.append(gen)
+
+            else:
+                # si es un bloque, busca y abre el archivo correspondiente
+                profesor_disponible = []
+                profesores_bloques = leer_bloques(curso['CLAVE'] + '-Profesores.csv')
+                
+                # generar un gen para cada tema del bloque
+                for i, tema in enumerate(profesores_bloques):
+                    # Verificar si el tema no está vacío
+                    if tema:
+                        # Incrementar el número de grupo en cada iteración
+                        #grupo = i + 1
+                        
+                        profesor_disponible = []
+                        for j, profesor in enumerate(profesores_bloques[tema]):
+                            if profesor == 'X':
+                                # obtener nombre del profesor de la lista de profesores
+                                profesor_disponible.append(lista_profesor_materia[j])
+                        profesor = random.choice(profesor_disponible) if profesor_disponible else 'N/A'
+                        UF = curso['CLAVE'] + '-' + tema
+                        
+                        gen = {'UF': [UF, grupo], 
+                            'Periodo': periodo, 
+                            'Profesor': profesor}  
+                        cromosoma.append(gen)
 
     # aleatorio de genes en el cromosoma
-    random.shuffle(cromosoma)
-
+    # random.shuffle(cromosoma)
     return cromosoma
 
 # generar poblacion
@@ -89,4 +126,6 @@ def generar_cromosomas():
 #         print(curso)
 #     print()
 
-print(generar_cromosomas())
+cromosomas = generar_cromosomas()
+for i in range(0, len(cromosomas)):
+    print(cromosomas[i])
