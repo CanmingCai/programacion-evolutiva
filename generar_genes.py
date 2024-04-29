@@ -4,16 +4,16 @@ from datetime import time
 
 lista_profesor_materia = ['Victor Manion', 'Juan Alvarado', 'Roberto Leyva', 'Mauricio Paletta', 'Yerly Flores', 'Jaime Lopez', 'Jorge Rodriguez', 'Jose Aguilera', 'Luis Guadarrama', 'Pedro Hernandez', 'Maria Mirafuentes', 'Roberto Vera', 'Octavio Silva', 'Fernando Ruiz', 'Ivan Olmos', 'Israel Tabarez']
 horario_profesor = {"Victor Manion": "Flexible", "Juan Alvarado": "Flexible", "Roberto Leyva": "Flexible", "Mauricio Paletta": "Flexible", "Yerly Flores": "Flexible", 
-                    "Jaime Lopez": {"Lunes": [time(7,0), time(11,0)], "Martes": "NA", "Miercoles": [time(7,0), time(11,0)], "Jueves": [time(7,0), time(11,0)], "Viernes": "NA"},
-                    "Jorge Rodriguez": {"Lunes": "NA", "Martes": "NA", "Miercoles": [time(7,0), time(10,0)], "Jueves": "NA", "Viernes": "NA"},
-                    "Jose Aguilera": {"Lunes": [time(9, 0), time(13, 0), time(17, 0), time(20, 0)], "Martes": "NA", "Miercoles": [time(9, 0), time(13, 0), time(17, 0), time(20, 0)], "Jueves": "NA", "Viernes": [time(9, 0), time(13, 0), time(17, 0), time(20, 0)]}, 
+                    "Jaime Lopez": {"Lunes": [time(7,0), time(11,0)], "Martes": [time(0,0), time(0,0)], "Miercoles": [time(7,0), time(11,0)], "Jueves": [time(7,0), time(11,0)], "Viernes": [time(0,0), time(0,0)]},
+                    "Jorge Rodriguez": {"Lunes": [time(0,0), time(0,0)], "Martes": [time(0,0), time(0,0)], "Miercoles": [time(7,0), time(10,0)], "Jueves": [time(0,0), time(0,0)], "Viernes": [time(0,0), time(0,0)]},
+                    "Jose Aguilera": {"Lunes": [time(9, 0), time(13, 0), time(17, 0), time(20, 0)], "Martes": [time(0,0), time(0,0)], "Miercoles": [time(9, 0), time(13, 0), time(17, 0), time(20, 0)], "Jueves": [time(0,0), time(0,0)], "Viernes": [time(9, 0), time(13, 0), time(17, 0), time(20, 0)]}, 
                     "Luis Guadarrama": {"Lunes": [time(7,0), time(9,0)], "Martes": [time(7,0), time(9,0)], "Miercoles": [time(7,0), time(9,0)], "Jueves": [time(7,0), time(9,0)], "Viernes": [time(7,0), time(9,0)]}, 
                     "Pedro Hernandez": {"Lunes": [time(11,0), time(21,0)], "Martes": [time(11,0), time(21,0)], "Miercoles": [time(11,0), time(21,0)], "Jueves": [time(11,0), time(21,0)], "Viernes": [time(11,0), time(21,0)]},
-                    "Maria Mirafuentes": {"Lunes": "NA", "Martes": "NA", "Miercoles": "NA", "Jueves": "NA", "Viernes": [time(11,0), time(13,0), time(15,0), time(17,0)]}, 
+                    "Maria Mirafuentes": {"Lunes": [time(0,0), time(0,0)], "Martes": [time(0,0), time(0,0)], "Miercoles": [time(0,0), time(0,0)], "Jueves": [time(0,0), time(0,0)], "Viernes": [time(11,0), time(13,0), time(15,0), time(17,0)]}, 
                     "Roberto Vera": {"Lunes": [time(11,0), time(21,0)], "Martes": [time(11,0), time(21,0)], "Miercoles": [time(11,0), time(21,0)], "Jueves": [time(11,0), time(21,0)], "Viernes": [time(11,0), time(21,0)]},
-                    "Octavio Silva": ["Flexible"], 
-                    "Fernando Ruiz": ["Flexible"], 
-                    "Ivan Olmos": {"Lunes": [time(17,0), time(19,0)], "Martes": "NA", "Miercoles": [time(17,0), time(19,0)], "Jueves": "NA", "Viernes": "NA"},
+                    "Octavio Silva": "Flexible", 
+                    "Fernando Ruiz": "Flexible", 
+                    "Ivan Olmos": {"Lunes": [time(17,0), time(19,0)], "Martes": [time(0,0), time(0,0)], "Miercoles": [time(17,0), time(19,0)], "Jueves": [time(0,0), time(0,0)], "Viernes": [time(0,0), time(0,0)]},
                     "Israel Tabarez": "Flexible"}
 
 # leer periodos de UDF.csv
@@ -67,7 +67,7 @@ def generar_cromosomas():
 
             # periodos
             periodos_curso = periodos[curso['CLAVE']]
-            print(periodos_curso)
+            #print(periodos_curso)
             periodos_disponibles = []
             for j, periodo in enumerate(periodos_curso):
                 if periodo == 'X':
@@ -108,6 +108,22 @@ def generar_cromosomas():
                         time(min(int(hora_inicio[2].split(":")[0]) + random.randint(2, 4), 21), 0).strftime("%H:%M"),
                         time(min(int(hora_inicio[3].split(":")[0]) + random.randint(2, 4), 21), 0).strftime("%H:%M"),
                         time(min(int(hora_inicio[4].split(":")[0]) + random.randint(2, 4), 21), 0).strftime("%H:%M")
+                    ]
+                else:
+                    #horario fijo
+                    hora_inicio = [
+                        horario['Lunes'][0].strftime("%H:%M"),
+                        horario['Martes'][0].strftime("%H:%M"),
+                        horario['Miercoles'][0].strftime("%H:%M"),
+                        horario['Jueves'][0].strftime("%H:%M"),
+                        horario['Viernes'][0].strftime("%H:%M")
+                    ]
+                    hora_fin = [
+                        horario['Lunes'][1].strftime("%H:%M"),
+                        horario['Martes'][1].strftime("%H:%M"),
+                        horario['Miercoles'][1].strftime("%H:%M"),
+                        horario['Jueves'][1].strftime("%H:%M"),
+                        horario['Viernes'][1].strftime("%H:%M")
                     ]
                 gen = {'UF': [UF, grupo], 
                     'Periodo': periodo, 
@@ -159,6 +175,22 @@ def generar_cromosomas():
                                 time(min(int(hora_inicio[2].split(":")[0]) + random.randint(2, 4), 21), 0).strftime("%H:%M"),
                                 time(min(int(hora_inicio[3].split(":")[0]) + random.randint(2, 4), 21), 0).strftime("%H:%M"),
                                 time(min(int(hora_inicio[4].split(":")[0]) + random.randint(2, 4), 21), 0).strftime("%H:%M")
+                            ]
+                        else:
+                            #horario fijo
+                            hora_inicio = [
+                                horario['Lunes'][0].strftime("%H:%M"),
+                                horario['Martes'][0].strftime("%H:%M"),
+                                horario['Miercoles'][0].strftime("%H:%M"),
+                                horario['Jueves'][0].strftime("%H:%M"),
+                                horario['Viernes'][0].strftime("%H:%M")
+                            ]
+                            hora_fin = [
+                                horario['Lunes'][1].strftime("%H:%M"),
+                                horario['Martes'][1].strftime("%H:%M"),
+                                horario['Miercoles'][1].strftime("%H:%M"),
+                                horario['Jueves'][1].strftime("%H:%M"),
+                                horario['Viernes'][1].strftime("%H:%M")
                             ]
                         
                         gen = {'UF': [UF, grupo], 
