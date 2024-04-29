@@ -1,8 +1,20 @@
 import csv
 import random
+from datetime import time
 
 lista_profesor_materia = ['Victor Manion', 'Juan Alvarado', 'Roberto Leyva', 'Mauricio Paletta', 'Yerly Flores', 'Jaime Lopez', 'Jorge Rodriguez', 'Jose Aguilera', 'Luis Guadarrama', 'Pedro Hernandez', 'Maria Mirafuentes', 'Roberto Vera', 'Octavio Silva', 'Fernando Ruiz', 'Ivan Olmos', 'Israel Tabarez']
-lista_bloque = ["TC1001B-Profesores.csv", "TC1002B-Profesores.csv", "TC1004B-Profesores.csv", "TC2005B-Profesores.csv", "TC2006B-Profesores.csv", "TC2007B-Profesores.csv", "TC2008B-Profesores.csv", "TC3002B-Profesores.csv", "TC3003B-Profesores.csv", "TC3004B-Profesores.csv", "TC3005B-Profesores.csv", "TI3005B-Profesores.csv"]
+horario_profesor = {"Victor Manion": "Flexible", "Juan Alvarado": "Flexible", "Roberto Leyva": "Flexible", "Mauricio Paletta": "Flexible", "Yerly Flores": "Flexible", 
+                    "Jaime Lopez": {"Lunes": [time(7,0), time(11,0)], "Martes": "NA", "Miercoles": [time(7,0), time(11,0)], "Jueves": [time(7,0), time(11,0)], "Viernes": "NA"},
+                    "Jorge Rodriguez": {"Lunes": "NA", "Martes": "NA", "Miercoles": [time(7,0), time(10,0)], "Jueves": "NA", "Viernes": "NA"},
+                    "Jose Aguilera": {"Lunes": [time(9, 0), time(13, 0), time(17, 0), time(20, 0)], "Martes": "NA", "Miercoles": [time(9, 0), time(13, 0), time(17, 0), time(20, 0)], "Jueves": "NA", "Viernes": [time(9, 0), time(13, 0), time(17, 0), time(20, 0)]}, 
+                    "Luis Guadarrama": {"Lunes": [time(7,0), time(9,0)], "Martes": [time(7,0), time(9,0)], "Miercoles": [time(7,0), time(9,0)], "Jueves": [time(7,0), time(9,0)], "Viernes": [time(7,0), time(9,0)]}, 
+                    "Pedro Hernandez": {"Lunes": [time(11,0), time(21,0)], "Martes": [time(11,0), time(21,0)], "Miercoles": [time(11,0), time(21,0)], "Jueves": [time(11,0), time(21,0)], "Viernes": [time(11,0), time(21,0)]},
+                    "Maria Mirafuentes": {"Lunes": "NA", "Martes": "NA", "Miercoles": "NA", "Jueves": "NA", "Viernes": [time(11,0), time(13,0), time(15,0), time(17,0)]}, 
+                    "Roberto Vera": {"Lunes": [time(11,0), time(21,0)], "Martes": [time(11,0), time(21,0)], "Miercoles": [time(11,0), time(21,0)], "Jueves": [time(11,0), time(21,0)], "Viernes": [time(11,0), time(21,0)]},
+                    "Octavio Silva": ["Flexible"], 
+                    "Fernando Ruiz": ["Flexible"], 
+                    "Ivan Olmos": {"Lunes": [time(17,0), time(19,0)], "Martes": "NA", "Miercoles": [time(17,0), time(19,0)], "Jueves": "NA", "Viernes": "NA"},
+                    "Israel Tabarez": "Flexible"}
 
 # leer periodos de UDF.csv
 def leer_periodos():
@@ -13,13 +25,6 @@ def leer_periodos():
             periodos[row['Clave']] = [row['P1'], row['P2'], row['P3']]
     return periodos
 # El resultado es un diccionario con las claves de los cursos y los periodos disponibles
-# ['X', 'X', '']
-# ['', 'X', '']
-# ['X', '', '']
-# ['', 'X', 'X']
-# ['X', '', '']
-# ['', 'X', '']
-# ['', '', 'X']
 
 # leer profesores y materias de Profesores y Materias.csv
 def leer_profesores_materias():
@@ -30,8 +35,6 @@ def leer_profesores_materias():
             profesores_materias[row['Clave']] = [row['Victor Manion'], row['Juan Alvarado'], row['Roberto Leyva'], row['Mauricio Paletta'], row['Yerly Flores'], row['Jaime Lopez'], row['Jorge Rodriguez'], row['Jose Aguilera'], row['Luis Guadarrama'], row['Pedro Hernandez'], row['Maria Mirafuentes'], row['Roberto Vera'], row['Octavio Silva'], row['Fernando Ruiz'], row['Ivan Olmos'], row['Israel Tabarez']]
     return profesores_materias
 # El resultado es un diccionario con las claves de los cursos y los profesores disponibles
-# ['X', '', '', 'X', '', '', '', '', '', '', '', '', '', '', '', '']
-# ['', 'X', '', '', '', '', '', 'X', '', 'X', '', '', '', '', '', '']
 
 def leer_bloques(file):
     profesores_bloques = {}
@@ -75,21 +78,50 @@ def generar_cromosomas():
             # si el clave del curso esta en el diccionario de profesores_materias
             if curso['CLAVE'] in profesores_materias:
                 profesor_disponible = []
+                hora_inicio = []
+                hora_fin = []
+
                 for j, profesor in enumerate(profesores_materias[curso['CLAVE']]):
                     if profesor == 'X':
                         # obtener nombre del profesor de la lista de profesores
                         profesor_disponible.append(lista_profesor_materia[j])
                 profesor = random.choice(profesor_disponible) if profesor_disponible else 'N/A'
                 UF = curso['CLAVE']
+                
+                #horarios del profesor
+                horario = horario_profesor[profesor]
+                if horario == "Flexible":
+                    #horario de lunes a viernes de 7:00 a 21:00 aleatorio cada dia
+                    #Hora inicio: [L,M,M,J,V] , Hora fin: [L,M,M,J,V]
+                    hora_inicio = [
+                        time(random.randint(7, 19), 0).strftime("%H:%M"),
+                        time(random.randint(7, 19), 0).strftime("%H:%M"),
+                        time(random.randint(7, 19), 0).strftime("%H:%M"),
+                        time(random.randint(7, 19), 0).strftime("%H:%M"),
+                        time(random.randint(7, 19), 0).strftime("%H:%M")
+                    ]
 
+                    #hora fin es la hora de inicio + 2-4 horas aleatorios, no puede ser mayor a 21:00
+                    hora_fin = [
+                        time(min(int(hora_inicio[0].split(":")[0]) + random.randint(2, 4), 21), 0).strftime("%H:%M"),
+                        time(min(int(hora_inicio[1].split(":")[0]) + random.randint(2, 4), 21), 0).strftime("%H:%M"),
+                        time(min(int(hora_inicio[2].split(":")[0]) + random.randint(2, 4), 21), 0).strftime("%H:%M"),
+                        time(min(int(hora_inicio[3].split(":")[0]) + random.randint(2, 4), 21), 0).strftime("%H:%M"),
+                        time(min(int(hora_inicio[4].split(":")[0]) + random.randint(2, 4), 21), 0).strftime("%H:%M")
+                    ]
                 gen = {'UF': [UF, grupo], 
                     'Periodo': periodo, 
-                    'Profesor': profesor}  
+                    'Profesor': profesor,
+                    'Hora_inicio': hora_inicio,
+                    'Hora_fin': hora_fin
+                    }  
                 cromosoma.append(gen)
 
             else:
-                # si es un bloque, busca y abre el archivo correspondiente
+                # si es un bloque, busca y abre el archivo correspondiente    -------------bloque------------
                 profesor_disponible = []
+                hora_inicio = []
+                hora_fin = []
                 profesores_bloques = leer_bloques(curso['CLAVE'] + '-Profesores.csv')
                 
                 # generar un gen para cada tema del bloque
@@ -106,14 +138,39 @@ def generar_cromosomas():
                                 profesor_disponible.append(lista_profesor_materia[j])
                         profesor = random.choice(profesor_disponible) if profesor_disponible else 'N/A'
                         UF = curso['CLAVE'] + '-' + tema
+
+                        #horarios del profesor
+                        horario = horario_profesor[profesor]
+                        if horario == "Flexible":
+                            #horario de lunes a viernes de 7:00 a 21:00 aleatorio cada dia
+                            #Hora inicio: [L,M,M,J,V] , Hora fin: [L,M,M,J,V]
+                            hora_inicio = [
+                                time(random.randint(7, 19), 0).strftime("%H:%M"),
+                                time(random.randint(7, 19), 0).strftime("%H:%M"),
+                                time(random.randint(7, 19), 0).strftime("%H:%M"),
+                                time(random.randint(7, 19), 0).strftime("%H:%M"),
+                                time(random.randint(7, 19), 0).strftime("%H:%M")
+                            ]
+
+                            #hora fin es la hora de inicio + 2-4 horas aleatorios, no puede ser mayor a 21:00
+                            hora_fin = [
+                                time(min(int(hora_inicio[0].split(":")[0]) + random.randint(2, 4), 21), 0).strftime("%H:%M"),
+                                time(min(int(hora_inicio[1].split(":")[0]) + random.randint(2, 4), 21), 0).strftime("%H:%M"),
+                                time(min(int(hora_inicio[2].split(":")[0]) + random.randint(2, 4), 21), 0).strftime("%H:%M"),
+                                time(min(int(hora_inicio[3].split(":")[0]) + random.randint(2, 4), 21), 0).strftime("%H:%M"),
+                                time(min(int(hora_inicio[4].split(":")[0]) + random.randint(2, 4), 21), 0).strftime("%H:%M")
+                            ]
                         
                         gen = {'UF': [UF, grupo], 
                             'Periodo': periodo, 
-                            'Profesor': profesor}  
+                            'Profesor': profesor,
+                            'Hora_inicio': hora_inicio,
+                            'Hora_fin': hora_fin
+                            }
                         cromosoma.append(gen)
 
     # aleatorio de genes en el cromosoma
-    # random.shuffle(cromosoma)
+    #random.shuffle(cromosoma)
     return cromosoma
 
 # generar poblacion
