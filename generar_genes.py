@@ -44,9 +44,32 @@ def leer_bloques(file):
             profesores_bloques[row['Tema']] = [row['Victor Manion'], row['Juan Alvarado'], row['Roberto Leyva'], row['Mauricio Paletta'], row['Yerly Flores'], row['Jaime Lopez'], row['Jorge Rodriguez'], row['Jose Aguilera'], row['Luis Guadarrama'], row['Pedro Hernandez'], row['Maria Mirafuentes'], row['Roberto Vera'], row['Octavio Silva'], row['Fernando Ruiz'], row['Ivan Olmos'], row['Israel Tabarez']]
     return profesores_bloques
 
+def generar_horario_clases(profesor):
+    horario_clases = {
+        "Hora_inicio": [],
+        "Hora_fin": []
+    }
+    for dia in ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes"]:
+        horario_disponible = horario_profesor[profesor][dia]
+        if horario_disponible[0] != time(0, 0):
+            # Seleccionar aleatoriamente un horario de inicio
+            hora_inicio = random.choice(horario_disponible[::2])  # Cada segundo elemento es una hora de inicio
+            indice_inicio = horario_disponible.index(hora_inicio)
+            # Calcular el horario de finalización
+            hora_fin = hora_inicio.replace(hour=hora_inicio.hour + random.randint(2, 4))
+            # Asegurarse de que el horario de finalización no exceda el horario de salida
+            if hora_fin > horario_disponible[indice_inicio + 1]:
+                hora_fin = horario_disponible[indice_inicio + 1]
+            horario_clases["Hora_inicio"].append(hora_inicio.strftime("%H:%M"))
+            horario_clases["Hora_fin"].append(hora_fin.strftime("%H:%M"))
+        else:
+            horario_clases["Hora_inicio"].append(time(0,0).strftime("%H:%M"))
+            horario_clases["Hora_fin"].append(time(0,0).strftime("%H:%M"))
+    return horario_clases
 
 
-def generar_cromosomas():
+
+def generar_cromosomas(file):
     cromosoma = []
 
     periodos = leer_periodos()
@@ -54,7 +77,7 @@ def generar_cromosomas():
 
     # leer CSV
     cursos = []
-    with open('Febrero-Junio.csv', newline='', encoding='utf-8-sig') as csvfile:
+    with open(file, newline='', encoding='utf-8-sig') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             cursos.append({'CLAVE': row['CLAVE'], '# GPOs': int(row['# GPOs'])})
@@ -178,20 +201,9 @@ def generar_cromosomas():
                             ]
                         else:
                             #horario fijo
-                            hora_inicio = [
-                                horario['Lunes'][0].strftime("%H:%M"),
-                                horario['Martes'][0].strftime("%H:%M"),
-                                horario['Miercoles'][0].strftime("%H:%M"),
-                                horario['Jueves'][0].strftime("%H:%M"),
-                                horario['Viernes'][0].strftime("%H:%M")
-                            ]
-                            hora_fin = [
-                                horario['Lunes'][1].strftime("%H:%M"),
-                                horario['Martes'][1].strftime("%H:%M"),
-                                horario['Miercoles'][1].strftime("%H:%M"),
-                                horario['Jueves'][1].strftime("%H:%M"),
-                                horario['Viernes'][1].strftime("%H:%M")
-                            ]
+                            horario_curso = generar_horario_clases(profesor)
+                            hora_inicio = horario_curso['Hora_inicio']
+                            hora_fin = horario_curso['Hora_fin']
                         
                         gen = {'UF': [UF, grupo], 
                             'Periodo': periodo, 
@@ -202,19 +214,36 @@ def generar_cromosomas():
                         cromosoma.append(gen)
 
     # aleatorio de genes en el cromosoma
-    #random.shuffle(cromosoma)
+    random.shuffle(cromosoma)
     return cromosoma
 
+
 # generar poblacion
-#poblacion1 = [generar_cromosomas() for _ in range(100)]
+file1 = "Agosto-Diciembre.csv"
+poblacion1 = [generar_cromosomas(file1) for _ in range(100)]
+
+file2 = "Febrero-Junio.csv"
+poblacion2 = [generar_cromosomas(file2) for _ in range(100)]
 
 # imprimir poblacion
-# for i, cromosoma in enumerate(poblacion1, 1):
-#     print(f"Cromosoma {i}:")
-#     for curso in cromosoma:
-#         print(curso)
-#     print()
+print("===================================================")
+print("                   Poblacion 1                     ")
+print("===================================================")
+for i, cromosoma in enumerate(poblacion1, 1):
+    print(f"Cromosoma {i}:")
+    for curso in cromosoma:
+        print(curso)
+    print()
 
-cromosomas = generar_cromosomas()
-for i in range(0, len(cromosomas)):
-    print(cromosomas[i])
+print("===================================================")
+print("                   Poblacion 2                     ")
+print("===================================================")
+for i, cromosoma in enumerate(poblacion2, 1):
+    print(f"Cromosoma {i}:")
+    for curso in cromosoma:
+        print(curso)
+    print()
+
+# cromosomas = generar_cromosomas()
+# for i in range(0, len(cromosomas)):
+#     print(cromosomas[i])
