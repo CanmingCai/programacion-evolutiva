@@ -37,5 +37,27 @@ def generar_horario_clases(profesor):
 
 # Ejemplo de uso para el profesor Jose Aguilera
 profesor = "Jose Aguilera"
-horario_clases = generar_horario_clases(profesor)
-print(horario_clases)
+#horario_clases = generar_horario_clases(profesor)
+#print(horario_clases)
+
+
+#--------------- cruces uniformes
+import random
+
+def cruce_uniforme(padre1, padre2):
+    hijo = padre1[:]  # Creamos una copia del padre1 para inicializar al hijo
+    for i in range(len(padre1)):
+        # Determinamos si se intercambia el gen en esta posición
+        if random.random() < 0.5:
+            hijo[i] = padre2[i]
+    return hijo
+
+# Ejemplo de uso
+padre1 = [1, 7, 3, 4, 5]
+padre2 = [6, 2, 8, 9, 10]
+hijo = cruce_uniforme(padre1, padre2)
+print("Padre 1:", padre1)
+print("Padre 2:", padre2)
+print("Hijo:", hijo)
+
+

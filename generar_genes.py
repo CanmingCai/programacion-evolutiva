@@ -226,23 +226,23 @@ file2 = "Febrero-Junio.csv"
 poblacion2 = [generar_cromosomas(file2) for _ in range(100)]
 
 # imprimir poblacion
-print("===================================================")
-print("                   Poblacion 1                     ")
-print("===================================================")
-for i, cromosoma in enumerate(poblacion1, 1):
-    print(f"Cromosoma {i}:")
-    for curso in cromosoma:
-        print(curso)
-    print()
+# print("===================================================")
+# print("                   Poblacion 1                     ")
+# print("===================================================")
+# for i, cromosoma in enumerate(poblacion1, 1):
+#     print(f"Cromosoma {i}:")
+#     for curso in cromosoma:
+#         print(curso)
+#     print()
 
-print("===================================================")
-print("                   Poblacion 2                     ")
-print("===================================================")
-for i, cromosoma in enumerate(poblacion2, 1):
-    print(f"Cromosoma {i}:")
-    for curso in cromosoma:
-        print(curso)
-    print()
+# print("===================================================")
+# print("                   Poblacion 2                     ")
+# print("===================================================")
+# for i, cromosoma in enumerate(poblacion2, 1):
+#     print(f"Cromosoma {i}:")
+#     for curso in cromosoma:
+#         print(curso)
+#     print()
 
 # cromosomas = generar_cromosomas()
 # for i in range(0, len(cromosomas)):
