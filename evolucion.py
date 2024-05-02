@@ -1,10 +1,23 @@
 import numpy as np
+import random
+import csv
 from generar_genes import generar_cromosomas
 
 lista_profesor_materia = ['Victor Manion', 'Juan Alvarado', 'Roberto Leyva', 'Mauricio Paletta', 'Yerly Flores', 'Jaime Lopez', 'Jorge Rodriguez', 'Jose Aguilera', 'Luis Guadarrama', 'Pedro Hernandez', 'Maria Mirafuentes', 'Roberto Vera', 'Octavio Silva', 'Fernando Ruiz', 'Ivan Olmos', 'Israel Tabarez']
 periodos = [["P1,P2,P3"], ["P1,P2"], ["P2,P3"], ["P1"], ["P2"], ["P3"]]
 UF =  ["TC1027", "TC1028", "TC1029", "TC1030", "TC1031", "TC1032", "TC1033", "TC2037", "TC2038", "TI1015"]
-
+bloques = { "TC1001B": ["TC1001B-1", "TC1001B-2", "TC1001B-3", "TC1001B-4", "TC1001B-5", "TC1001B-6", "TC1001B-7"],
+            "TC1002B": ["TC1002B-1", "TC1002B-2", "TC1002B-3", "TC1002B-4", "TC1002B-5", "TC1002B-6", "TC1002B-7"],
+            "TC1004B": ["TC1004B-1", "TC1004B-2", "TC1004B-3", "TC1004B-4", "TC1004B-5", "TC1004B-6", "TC1004B-7", "TC1004B-8", "TC1004B-9"],
+            "TC1005B": ["TC1005B-1", "TC1005B-2", "TC1005B-3", "TC1005B-4", "TC1005B-5", "TC1005B-6", "TC1005B-7", "TC1005B-8"],
+            "TC1006B": ["TC1006B-1", "TC1006B-2", "TC1006B-3"],
+            "TC1007B": ["TC1007B-1", "TC1007B-2", "TC1007B-3", "TC1007B-4", "TC1007B-5", "TC1007B-6"],
+            "TC1008B": ["TC1008B-1", "TC1008B-2", "TC1008B-3", "TC1008B-4", "TC1008B-5", "TC1008B-6", "TC1008B-7"],
+            "TC3002B": ["TC3002B-1", "TC3002B-2", "TC3002B-3", "TC3002B-4"],
+            "TC3003B": ["TC3003B-1", "TC3003B-2", "TC3003B-3", "TC3003B-4"],
+            "TC3004B": ["TC3004B-1", "TC3004B-2", "TC3004B-3", "TC3004B-4", "TC3004B-5"],
+            "TC3005B": ["TC3005B-1", "TC3005B-2", "TC3005B-3", "TC3005B-4", "TC3005B-5", "TC3005B-6", "TC3005B-7"],
+        }
 
 # Genera los costos aleatorios
 costo = np.random.uniform(5, 40, 100)
@@ -76,45 +89,87 @@ def cruce_uniforme(cromosoma1, cromosoma2):
             hijo.append(cromosoma1[i])
     return hijo
 
+
+def leer_curso(file):
+    cursos = []
+    with open(file, newline='', encoding='utf-8-sig') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            cursos.append({'CLAVE': row['CLAVE'], '# GPOs': int(row['# GPOs'])})
+    return cursos
+
 # {'UF': ['TC1028', 8], 'Periodo': 'P1,P2', 'Profesor': 'Mauricio Paletta', 'Hora_inicio': ['11:00', '11:00', '19:00', '18:00', '12:00'], 'Hora_fin': ['13:00', '13:00', '21:00', '21:00', '16:00']}
 def mutacion(cromosoma):
+    cursos = leer_curso(file1)
     hijo = cromosoma[:]
     num_genes_mutar = 1
     genes_mutar = np.random.choice(len(cromosoma), num_genes_mutar, replace=False)
-    #随机在Mutación de UF, Mutación de Periodo, Mutación de Profesor, Mutación Hora Inicio, Mutación Hora Fin选择一个进行变异
+    
+    # Verifica si genes_mutar está vacío
+    if len(genes_mutar) == 0:
+        print("Error: No se generaron genes para mutar")
+        return hijo
+    
+    print("Genes a mutar:", [cromosoma[i] for i in genes_mutar])
+    print("")
+    #aleatoria eleige un atributo para mutar: Mutación de UF, Mutación de Periodo, Mutación de Profesor, Mutación Hora Inicio, Mutación Hora Fin
     atributo = np.random.randint(0, 5)
     if atributo == 0:
+        print("============================ se mudo en UF ===========================")
         if hijo[genes_mutar[0]] in UF:
-            hijo[genes_mutar[0]] = np.random.choice(UF) + " " + str(np.random.randint(1, 8))
+            #si grupo de la materia es 1 en array de cursos, se queda en 1
+            for curso in cursos:
+                if curso['CLAVE'] == hijo[genes_mutar[0]]["UF"][0]:
+                    hijo[genes_mutar[0]]["UF"] = np.random.choice(UF) + ", " + str(np.random.randint(1, curso['# GPOs']))
+                    print("se mutó en materia")
         else:
-            hijo[genes_mutar[0]] = np.random.choice(UF) + " " + str(np.random.randint(1, 8))
+            #si es bloque, cambia el tema del bloque correspondiente
+            #['TC2008B-3', 1]
+            for bloque in bloques:
+                if hijo[genes_mutar[0]]["UF"][0] in bloques[bloque]:
+                    hijo[genes_mutar[0]]["UF"] = np.random.choice(bloques[bloque]) + ", " + str("1")
+                    print("se mutó en bloque")
+            
     elif atributo == 1:
-        hijo[genes_mutar[1]] = np.random.choice(periodos)
+        print("============================ se mudo en periodo ===========================")
+        hijo[genes_mutar[0]]["Periodo"] = random.choice(periodos)
     elif atributo == 2:
-        hijo[genes_mutar[2]] = np.random.choice(lista_profesor_materia)
+        print("============================ se mudo en profesor ===========================")
+        hijo[genes_mutar[0]]['Profesor'] = random.choice(lista_profesor_materia)
     elif atributo == 3:
+        print("============================ se mudo en hora inicio ===========================")
         hora_inicio = [] 
         # de 7 a 19 horas
         for i in range(5):
             hora_random = np.random.randint(7, 19)
             hora_inicio.append(str(hora_random) + ":" + str("00"))
-        hijo[genes_mutar[3]] = hora_inicio
+        hijo[genes_mutar[0]]["Hora_inicio"] = hora_inicio
     elif atributo == 4:
-        # hora inicio + 2 a 4 horas
-        hora_fin = np.random.randint(7, 18)
-        min_fin = np.random.choice([0, 30])
-        hijo[genes_mutar[0]] = str(hora_fin) + ":" + str(min_fin)
+        print("============================ se mudo en hora fin ===========================")
+        # hora_fin = hora inicio + 2 a 4 horas
+        hora_fin = []
+        for i in range(5):
+            hora_random = np.random.randint(2, 4)
+            hora_fin.append(str(int(hijo[genes_mutar[0]]["Hora_inicio"][i][0:2]) + hora_random) + ":" + str("00"))
+        hijo[genes_mutar[0]]["Hora_fin"] = hora_fin
+    return hijo
+
  
-min_costo_cromosoma_1 = [1, 7, 3, 4, 5]
-min_costo_cromosoma_2 = [6, 2, 8, 9, 10]
+# min_costo_cromosoma_1 = [1, 7, 3, 4, 5]
+# min_costo_cromosoma_2 = [6, 2, 8, 9, 10]
 hijo = cruce_uniforme(min_costo_cromosoma_1, min_costo_cromosoma_2)
 
+mutante = mutacion(min_costo_cromosoma_1)
+#print("Mutante:", mutante)
+for i in range(len(mutante)):
+    print(i, mutante[i])
 
-print("Padre 1:", min_costo_cromosoma_1)
-print("")
-print("Padre 2:", min_costo_cromosoma_2)
-print("")
-print("Hijo:", hijo)
+
+# print("Padre 1:", min_costo_cromosoma_1)
+# print("")
+# print("Padre 2:", min_costo_cromosoma_2)
+# print("")
+# print("Hijo:", hijo)
 
 #guardar los cromosomas seleccionados en una poblacion nueva
 # new_poblacion1 = []

@@ -214,7 +214,7 @@ def generar_cromosomas(file):
                         cromosoma.append(gen)
 
     # aleatorio de genes en el cromosoma
-    random.shuffle(cromosoma)
+    #random.shuffle(cromosoma)
     return cromosoma
 
 
