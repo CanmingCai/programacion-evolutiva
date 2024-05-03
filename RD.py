@@ -4,6 +4,7 @@ from datetime import datetime
 from datetime import time, timedelta
 
 from generar_genes import generar_cromosomas
+from generar_genes import horario_profesor
 
 import csv
 # No se pueden programar grupos en la franja que va desde las 13:00 hasta las 15:00 horas de lunes a viernes.
@@ -201,7 +202,44 @@ def revisar_disponibilidad_profesores(diccionarios, archivo_csv):
                     pen=1
     return pen
 
-
+############################################################################################################
+# Se debe respetar la franja de horas de disponibilidad de los profesores 
+def verificar_franja_horarios(horario_profesor, cromosoma):
+    profesores_flexibles = set()
+    penaliza = 0
+    for clase in cromosoma:
+        profesor = clase['Profesor']
+        if profesor in horario_profesor:
+            horario_profesor_profesor = horario_profesor[profesor]
+            hora_inicio_clase = clase['Hora_inicio']
+            hora_fin_clase = clase['Hora_fin']
+            for i in range(len(hora_inicio_clase)):
+                if hora_inicio_clase[i] != '00:00':
+                    hora_inicio = datetime.strptime(hora_inicio_clase[i], '%H:%M').time()
+                    hora_fin = datetime.strptime(hora_fin_clase[i], '%H:%M').time()
+                    dia_semana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'][i]
+                    if isinstance(horario_profesor_profesor, dict) and dia_semana in horario_profesor_profesor:
+                        horarios_disponibles = horario_profesor_profesor[dia_semana]
+                        # Verificar si el horario de la clase está dentro del horario del profesor
+                        if any(hora_inicio >= inicio and hora_fin <= fin for inicio, fin in zip(horarios_disponibles[::2], horarios_disponibles[1::2])):
+                            #print(f"El profesor {profesor} está asignado en el horario de la clase {clase['UF']} el día {dia_semana} de {hora_inicio} a {hora_fin}")
+                            penaliza += 0
+                        else:
+                            #print(f"El profesor {profesor} no puede dar clase en ese horario el día {dia_semana}.")
+                            penaliza += 1
+                    elif isinstance(horario_profesor_profesor, str) and horario_profesor_profesor == "Flexible":
+                        if profesor not in profesores_flexibles:
+                            #print(f"El profesor {profesor} tiene un horario flexible y puede ser asignado en cualquier horario.")
+                            profesores_flexibles.add(profesor)
+                            penaliza += 0
+                    else:
+                        #print(f"El profesor {profesor} no tiene un horario asignado para el día {dia_semana}.")
+                        penaliza += 1
+        else:
+            #print(f"El profesor {profesor} no puede dar clase en ese horario.")
+            penaliza += 1
+    if penaliza  >=1: return 1
+    else: return 0
 
 ############################################################################################################
 
@@ -250,17 +288,20 @@ def validar_horario(cursos):
         return 1
     else:
         return 0
-
+############################################################################################################
 
 
 # Genera la población
 file1 = "Agosto-Diciembre.csv"
-poblacion1 = [generar_cromosomas(file1) for _ in range(5)]
+poblacion1 = [generar_cromosomas(file1) for _ in range(1)]
+print(poblacion1)
+print("\n ****")
 
 # Evaluar la población
 penalizaciones = []  # Initialize an empty list for penalizaciones
 for cromosoma in poblacion1:
-    penalizacion =  revisar_disponibilidad_profesores(cromosoma,"Profesores y Materias.csv")
+    #penalizacion =  revisar_disponibilidad_profesores(cromosoma,"Profesores y Materias.csv")
+    penalizacion = verificar_franja_horarios(horario_profesor, cromosoma)
     penalizaciones.append(penalizacion)  # Append the penalization value to the list
     #print("cronosoma:", cromosoma)
     print("Penalizaciones:", penalizacion)
