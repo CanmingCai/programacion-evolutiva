@@ -1,0 +1,240 @@
+Clave,Nombre,UDC,Periodo,Semestre,Horas,Grupos,Tipo,Mes,Tema ID,Tema,Hora Tema,Nombre_Profesor,Profesor
+TC1027,Programación para negocios,1,2,1,20,4,Materia,Ago-Dic,,,,Juan Alvarado,L03524672
+TC1027,Programación para negocios,1,2,1,20,4,Materia,Ago-Dic,,,,Roberto Leyva,L03518135
+TC1027,Programación para negocios,1,2,1,20,4,Materia,Ago-Dic,,,,Mauricio Paletta,L03542594
+TC1027,Programación para negocios,1,2,1,20,4,Materia,Ago-Dic,,,,Jaime López,L03043605
+TC1027,Programación para negocios,1,2,1,20,4,Materia,Ago-Dic,,,,José Aguilera,L00534370
+TC1027,Programación para negocios,1,2,1,20,4,Materia,Ago-Dic,,,,Pedro Hernandez,L03546291
+TC1027,Programación para negocios,1,2,1,20,4,Materia,Ago-Dic,,,,Roberto Vera,L03556523
+TC1028,Pensamiento computacional para ingeniería,2,"1,2",1,40,8,Materia,Ago-Dic,,,,Víctor Mañón,L00271734
+TC1028,Pensamiento computacional para ingeniería,2,"1,2",1,40,8,Materia,Ago-Dic,,,,Juan Alvarado,L03524672
+TC1028,Pensamiento computacional para ingeniería,2,"1,2",1,40,8,Materia,Ago-Dic,,,,Roberto Leyva,L03518135
+TC1028,Pensamiento computacional para ingeniería,2,"1,2",1,40,8,Materia,Ago-Dic,,,,Mauricio Paletta,L03542594
+TC1028,Pensamiento computacional para ingeniería,2,"1,2",1,40,8,Materia,Ago-Dic,,,,Yerly Flores,L03032035
+TC1028,Pensamiento computacional para ingeniería,2,"1,2",1,40,8,Materia,Ago-Dic,,,,José Aguilera,L00534370
+TC1028,Pensamiento computacional para ingeniería,2,"1,2",1,40,8,Materia,Ago-Dic,,,,Pedro Hernandez,L03546291
+TC1028,Pensamiento computacional para ingeniería,2,"1,2",1,40,8,Materia,Ago-Dic,,,,Roberto Vera,L03556523
+TC1029,Pensamiento computacional y programación,3,"1,2,3",1,60,,Materia,,,,,Víctor Mañón,L00271734
+TC1029,Pensamiento computacional y programación,3,"1,2,3",1,60,,Materia,,,,,Juan Alvarado,L03524672
+TC1029,Pensamiento computacional y programación,3,"1,2,3",1,60,,Materia,,,,,Roberto Leyva,L03518135
+TC1029,Pensamiento computacional y programación,3,"1,2,3",1,60,,Materia,,,,,Mauricio Paletta,L03542594
+TC1029,Pensamiento computacional y programación,3,"1,2,3",1,60,,Materia,,,,,José Aguilera,L00534370
+TC1029,Pensamiento computacional y programación,3,"1,2,3",1,60,,Materia,,,,,Pedro Hernandez,L03546291
+TC1029,Pensamiento computacional y programación,3,"1,2,3",1,60,,Materia,,,,,Roberto Vera,L03556523
+TC1030,Programación orientada a objetos,1,3,2,20,1,Materia,Feb-Jun,,,,Víctor Mañón,L00271734
+TC1030,Programación orientada a objetos,1,3,2,20,1,Materia,Feb-Jun,,,,Mauricio Paletta,L03542594
+TC1031,Programación de estructuras de datos y algoritmos fundamentales,3,"1,2,3",3,60,1,Materia,Ago-Dic,,,,Víctor Mañón,L00271734
+TC1031,Programación de estructuras de datos y algoritmos fundamentales,3,"1,2,3",3,60,1,Materia,Ago-Dic,,,,Juan Alvarado,L03524672
+TC1031,Programación de estructuras de datos y algoritmos fundamentales,3,"1,2,3",3,60,1,Materia,Ago-Dic,,,,Roberto Leyva,L03518135
+TC1031,Programación de estructuras de datos y algoritmos fundamentales,3,"1,2,3",3,60,1,Materia,Ago-Dic,,,,Mauricio Paletta,L03542594
+TC1031,Programación de estructuras de datos y algoritmos fundamentales,3,"1,2,3",3,60,1,Materia,Ago-Dic,,,,José Aguilera,L00534370
+TC1032,Modelación de sistemas mínimos y arquitecturas computacionales,1,2,3,20,1,Materia,Ago-Dic,,,,Yerly Flores,L03032035
+TC1032,Modelación de sistemas mínimos y arquitecturas computacionales,1,2,3,20,1,Materia,Ago-Dic,,,,Jorge Rodríguez,L01163675
+TC1032,Modelación de sistemas mínimos y arquitecturas computacionales,1,2,3,20,1,Materia,Ago-Dic,,,,Fernando Ruiz,L01249086
+TC1032,Modelación de sistemas mínimos y arquitecturas computacionales,1,2,3,20,1,Materia,Ago-Dic,,,,Israel Tabarez,L03532458
+TC1033,Pensamiento computacional orientado a objetos,1,3,1,20,1,Materia,Ago-Dic,,,,Víctor Mañón,L00271734
+TC1033,Pensamiento computacional orientado a objetos,1,3,1,20,1,Materia,Ago-Dic,,,,Mauricio Paletta,L03542594
+TC1001B-1,Principios de programación para las ciencias sociales,3,3,1,60,4,Bloque,Ago-Dic,1,Transformación pública,4,Jorge Rodríguez,L01163675
+TC1001B-2,Principios de programación para las ciencias sociales,3,3,1,60,4,Bloque,Ago-Dic,2,Inteligencia,8,Mauricio Paletta,L03542594
+TC1001B-3,Principios de programación para las ciencias sociales,3,3,1,60,4,Bloque,Ago-Dic,3,Pensamiento algorítmico y toma de decisiones,6,Víctor Mañón,L00271734
+TC1001B-3,Principios de programación para las ciencias sociales,3,3,1,60,4,Bloque,Ago-Dic,3,Pensamiento algorítmico y toma de decisiones,6,Juan Alvarado,L03524672
+TC1001B-3,Principios de programación para las ciencias sociales,3,3,1,60,4,Bloque,Ago-Dic,3,Pensamiento algorítmico y toma de decisiones,6,Roberto Leyva,L03518135
+TC1001B-3,Principios de programación para las ciencias sociales,3,3,1,60,4,Bloque,Ago-Dic,3,Pensamiento algorítmico y toma de decisiones,6,Mauricio Paletta,L03542594
+TC1001B-3,Principios de programación para las ciencias sociales,3,3,1,60,4,Bloque,Ago-Dic,3,Pensamiento algorítmico y toma de decisiones,6,Roberto Vera,L03556523
+TC1001B-4,Principios de programación para las ciencias sociales,3,3,1,60,4,Bloque,Ago-Dic,4,Principios de programación básica para Ciencias sociales,8,Jorge Rodríguez,L01163675
+TC1001B-5,Principios de programación para las ciencias sociales,3,3,1,60,4,Bloque,Ago-Dic,5,Los grandes pensadores de la inteligencia artificial,24,Roberto Leyva,L03518135
+TC1001B-5,Principios de programación para las ciencias sociales,3,3,1,60,4,Bloque,Ago-Dic,5,Los grandes pensadores de la inteligencia artificial,24,Mauricio Paletta,L03542594
+TC1001B-6,Principios de programación para las ciencias sociales,3,3,1,60,4,Bloque,Ago-Dic,6,Tecnologías que están cambiando todos los aspectos de la industria,6,Jorge Rodríguez,L01163675
+TC1001B-6,Principios de programación para las ciencias sociales,3,3,1,60,4,Bloque,Ago-Dic,6,Tecnologías que están cambiando todos los aspectos de la industria,6,Octavio Silva,L03557809
+TC1001B-7,Principios de programación para las ciencias sociales,3,3,1,60,4,Bloque,Ago-Dic,7,Generación de propuestas de emprendimiento público con tecnología,4,Jorge Rodríguez,L01163675
+TC1001B-7,Principios de programación para las ciencias sociales,3,3,1,60,4,Bloque,Ago-Dic,7,Generación de propuestas de emprendimiento público con tecnología,4,Octavio Silva,L03557809
+TC1002B-1,Herramientas Tecnológicas para Ciencias Sociales,3,2,4,60,1,Bloque,Feb-Jun,1,Dilemas contemporáneos que atienden las ciencias sociales,2,Jorge Rodríguez,L01163675
+TC1002B-2,Herramientas Tecnológicas para Ciencias Sociales,3,2,4,60,1,Bloque,Feb-Jun,2,"El emprendimiento público, su estado actual y su potencial",2,Jorge Rodríguez,L01163675
+TC1002B-3,Herramientas Tecnológicas para Ciencias Sociales,3,2,4,60,1,Bloque,Feb-Jun,3,Entendimiento sobre las tecnologías emergentes para resolver problemas de las ciencias sociales,6,Jorge Rodríguez,L01163675
+TC1002B-4,Herramientas Tecnológicas para Ciencias Sociales,3,2,4,60,1,Bloque,Feb-Jun,4,Introducción a la programación y pensamiento algorítmico,24,Víctor Mañón,L00271734
+TC1002B-4,Herramientas Tecnológicas para Ciencias Sociales,3,2,4,60,1,Bloque,Feb-Jun,4,Introducción a la programación y pensamiento algorítmico,24,Juan Alvarado,L03524672
+TC1002B-4,Herramientas Tecnológicas para Ciencias Sociales,3,2,4,60,1,Bloque,Feb-Jun,4,Introducción a la programación y pensamiento algorítmico,24,Roberto Leyva,L03518135
+TC1002B-4,Herramientas Tecnológicas para Ciencias Sociales,3,2,4,60,1,Bloque,Feb-Jun,4,Introducción a la programación y pensamiento algorítmico,24,Mauricio Paletta,L03542594
+TC1002B-5,Herramientas Tecnológicas para Ciencias Sociales,3,2,4,60,1,Bloque,Feb-Jun,5,Proyectos,16,Jorge Rodríguez,L01163675
+TC1002B-6,Herramientas Tecnológicas para Ciencias Sociales,3,2,4,60,1,Bloque,Feb-Jun,6,Algoritmos y estructuras de datos,8,Víctor Mañón,L00271734
+TC1002B-6,Herramientas Tecnológicas para Ciencias Sociales,3,2,4,60,1,Bloque,Feb-Jun,6,Algoritmos y estructuras de datos,8,Mauricio Paletta,L03542594
+TC1002B-7,Herramientas Tecnológicas para Ciencias Sociales,3,2,4,60,1,Bloque,Feb-Jun,7,Tecnología y transformación pública,2,Jorge Rodríguez,L01163675
+TC1003B,Modelación de la ingeniería con matemática computacional,3,1,2,60,,Materia,,,,,,
+TC1004B-1,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,1,Álgebra booleana y compuertas lógicas,15,Yerly Flores,L03032035
+TC1004B-1,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,1,Álgebra booleana y compuertas lógicas,15,Jaime López,L03043605
+TC1004B-1,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,1,Álgebra booleana y compuertas lógicas,15,Israel Tabarez,L03532458
+TC1004B-2,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,2,Lógica combinacional,15,Yerly Flores,L03032035
+TC1004B-2,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,2,Lógica combinacional,15,Jaime López,L03043605
+TC1004B-2,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,2,Lógica combinacional,15,Israel Tabarez,L03532458
+TC1004B-3,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,3,Lógica secuencial sincrónica,5,Yerly Flores,L03032035
+TC1004B-3,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,3,Lógica secuencial sincrónica,5,Jaime López,L03043605
+TC1004B-3,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,3,Lógica secuencial sincrónica,5,Israel Tabarez,L03532458
+TC1004B-4,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,4,Registros y contadores,5,Yerly Flores,L03032035
+TC1004B-4,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,4,Registros y contadores,5,Jaime López,L03043605
+TC1004B-4,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,4,Registros y contadores,5,Israel Tabarez,L03532458
+TC1004B-5,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,5,Lógica secuencial asincrónica,5,Yerly Flores,L03032035
+TC1004B-5,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,5,Lógica secuencial asincrónica,5,Jaime López,L03043605
+TC1004B-5,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,5,Lógica secuencial asincrónica,5,Israel Tabarez,L03532458
+TC1004B-6,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,6,Análisis y diseño de bases de datos,20,Víctor Mañón,L00271734
+TC1004B-6,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,6,Análisis y diseño de bases de datos,20,Juan Alvarado,L03524672
+TC1004B-6,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,6,Análisis y diseño de bases de datos,20,Roberto Leyva,L03518135
+TC1004B-6,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,6,Análisis y diseño de bases de datos,20,Mauricio Paletta,L03542594
+TC1004B-6,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,6,Análisis y diseño de bases de datos,20,José Aguilera,L00534370
+TC1004B-6,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,6,Análisis y diseño de bases de datos,20,Pedro Hernandez,L03546291
+TC1004B-7,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,7,Introducción al diseño interactivo,10,Víctor Mañón,L00271734
+TC1004B-7,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,7,Introducción al diseño interactivo,10,Juan Alvarado,L03524672
+TC1004B-7,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,7,Introducción al diseño interactivo,10,Roberto Leyva,L03518135
+TC1004B-7,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,7,Introducción al diseño interactivo,10,Mauricio Paletta,L03542594
+TC1004B-7,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,7,Introducción al diseño interactivo,10,José Aguilera,L00534370
+TC1004B-7,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,7,Introducción al diseño interactivo,10,Pedro Hernandez,L03546291
+TC1004B-8,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,8,Administración de recursos de un sistema computacional,15,José Aguilera,L00534370
+TC1004B-8,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,8,Administración de recursos de un sistema computacional,15,Pedro Hernandez,L03546291
+TC1004B-8,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,8,Administración de recursos de un sistema computacional,15,Israel Tabarez,L03532458
+TC1004B-9,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,9,Internet of Things,30,Fernando Ruiz,L01249086
+TC1004B-9,Implementación de internet de las cosas,6,"2,3",3,120,1,Bloque ,Ago-Dic,9,Internet of Things,30,Israel Tabarez,L03532458
+TC2037,Implementación de métodos computacionales,3,"1,2,3",4,60,1,Materia,Feb-Jun,,,,Juan Alvarado,L03524672
+TC2037,Implementación de métodos computacionales,3,"1,2,3",4,60,1,Materia,Feb-Jun,,,,José Aguilera,L00534370
+TC2037,Implementación de métodos computacionales,3,"1,2,3",4,60,1,Materia,Feb-Jun,,,,Pedro Hernandez,L03546291
+TC2038,Análisis y diseño de algoritmos avanzados,3,"1,2,3",5,60,1,Materia,Ago-Dic,,,,Juan Alvarado,L03524672
+TC2038,Análisis y diseño de algoritmos avanzados,3,"1,2,3",5,60,1,Materia,Ago-Dic,,,,Mauricio Paletta,L03542594
+TC2038,Análisis y diseño de algoritmos avanzados,3,"1,2,3",5,60,1,Materia,Ago-Dic,,,,José Aguilera,L00534370
+TC2005B-1,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,1,Metodologías ágiles en el desarrollo de software,4,Juan Alvarado,L03524672
+TC2005B-1,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,1,Metodologías ágiles en el desarrollo de software,4,Luis Guadarrama,L03545506
+TC2005B-1,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,1,Metodologías ágiles en el desarrollo de software,4,María Mirafuentes,L03069916
+TC2005B-2,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,2,Análisis y diseño del software,50,Víctor Mañón,L00271734
+TC2005B-2,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,2,Análisis y diseño del software,50,Juan Alvarado,L03524672
+TC2005B-2,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,2,Análisis y diseño del software,50,Roberto Leyva,L03518135
+TC2005B-2,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,2,Análisis y diseño del software,50,Mauricio Paletta,L03542594
+TC2005B-2,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,2,Análisis y diseño del software,50,José Aguilera,L00534370
+TC2005B-2,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,2,Análisis y diseño del software,50,Luis Guadarrama,L03545506
+TC2005B-2,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,2,Análisis y diseño del software,50,Pedro Hernandez,L03546291
+TC2005B-3,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,3,Calidad en el software,8,Juan Alvarado,L03524672
+TC2005B-3,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,3,Calidad en el software,8,Luis Guadarrama,L03545506
+TC2005B-5,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,4,Despliegue de software,4,Juan Alvarado,L03524672
+TC2005B-5,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,4,Despliegue de software,4,Luis Guadarrama,L03545506
+TC2005B-5,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,5,Desarrollo WEB,30,Víctor Mañón,L00271734
+TC2005B-5,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,5,Desarrollo WEB,30,Roberto Vera,L03556523
+TC2005B-6,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,6,Sistema transaccional,30,Víctor Mañón,L00271734
+TC2005B-6,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,6,Sistema transaccional,30,Juan Alvarado,L03524672
+TC2005B-6,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,6,Sistema transaccional,30,Roberto Leyva,L03518135
+TC2005B-6,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,6,Sistema transaccional,30,Mauricio Paletta,L03542594
+TC2005B-6,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,6,Sistema transaccional,30,José Aguilera,L00534370
+TC2005B-6,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,6,Sistema transaccional,30,Pedro Hernandez,L03546291
+TC2005B-7,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,7,Proceso de toma de decisiones,4,Juan Alvarado,L03524672
+TC2005B-7,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,7,Proceso de toma de decisiones,4,Mauricio Paletta,L03542594
+TC2005B-7,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,7,Proceso de toma de decisiones,4,María Mirafuentes,L03069916
+TC2005B-7,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,7,Proceso de toma de decisiones,4,Luis Guadarrama,L03545506
+TC2005B-7,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,7,Proceso de toma de decisiones,4,María Mirafuentes,L03069916
+TC2005B-8,Construcción de software y toma de decisiones,8,"1,2",4,160,1,Bloque,Feb-Jun,8,Proceso de desarrollo de videojuegos,30,Roberto Leyva,L03518135
+TC2006B-1,Interconexión de dispositivos,4,3,4,80,1,Bloque,Feb-Jun,1,Introducción a las comunicaciones de datos,20,Víctor Mañón,L00271734
+TC2006B-1,Interconexión de dispositivos,4,3,4,80,1,Bloque,Feb-Jun,1,Introducción a las comunicaciones de datos,20,Juan Alvarado,L03524672
+TC2006B-1,Interconexión de dispositivos,4,3,4,80,1,Bloque,Feb-Jun,1,Introducción a las comunicaciones de datos,20,Roberto Leyva,L03518135
+TC2006B-1,Interconexión de dispositivos,4,3,4,80,1,Bloque,Feb-Jun,1,Introducción a las comunicaciones de datos,20,Yerly Flores,L03032035
+TC2006B-2,Interconexión de dispositivos,4,3,4,80,1,Bloque,Feb-Jun,2,Componentes físicos y lógicos de una red,30,Víctor Mañón,L00271734
+TC2006B-2,Interconexión de dispositivos,4,3,4,80,1,Bloque,Feb-Jun,2,Componentes físicos y lógicos de una red,30,Juan Alvarado,L03524672
+TC2006B-2,Interconexión de dispositivos,4,3,4,80,1,Bloque,Feb-Jun,2,Componentes físicos y lógicos de una red,30,Roberto Leyva,L03518135
+TC2006B-2,Interconexión de dispositivos,4,3,4,80,1,Bloque,Feb-Jun,2,Componentes físicos y lógicos de una red,30,Yerly Flores,L03032035
+TC2006B-3,Interconexión de dispositivos,4,3,4,80,1,Bloque,Feb-Jun,3,Estrategias de diseño de redes y resolución a problemas de interconexión,30,Víctor Mañón,L00271734
+TC2006B-3,Interconexión de dispositivos,4,3,4,80,1,Bloque,Feb-Jun,3,Estrategias de diseño de redes y resolución a problemas de interconexión,30,Juan Alvarado,L03524672
+TC2006B-3,Interconexión de dispositivos,4,3,4,80,1,Bloque,Feb-Jun,3,Estrategias de diseño de redes y resolución a problemas de interconexión,30,Roberto Leyva,L03518135
+TC2006B-3,Interconexión de dispositivos,4,3,4,80,1,Bloque,Feb-Jun,3,Estrategias de diseño de redes y resolución a problemas de interconexión,30,Yerly Flores,L03032035
+TC2007B-1,Integración de seguridad informática en redes y sistemas de software,8,"1,2",5,160,1,Bloque,Ago-Dic,1,Configuración de equipo de interconexión,15,Víctor Mañón,L00271734
+TC2007B-1,Integración de seguridad informática en redes y sistemas de software,8,"1,2",5,160,1,Bloque,Ago-Dic,1,Configuración de equipo de interconexión,15,Yerly Flores,L03032035
+TC2007B-2,Integración de seguridad informática en redes y sistemas de software,8,"1,2",5,160,1,Bloque,Ago-Dic,2,Verificación de la operación de una red,20,Víctor Mañón,L00271734
+TC2007B-2,Integración de seguridad informática en redes y sistemas de software,8,"1,2",5,160,1,Bloque,Ago-Dic,2,Verificación de la operación de una red,20,Yerly Flores,L03032035
+TC2007B-3,Integración de seguridad informática en redes y sistemas de software,8,"1,2",5,160,1,Bloque,Ago-Dic,3,Seguridad en aplicaciones y redes,25,Víctor Mañón,L00271734
+TC2007B-4,Integración de seguridad informática en redes y sistemas de software,8,"1,2",5,160,1,Bloque,Ago-Dic,4,Desarrollo móvil,50,Roberto Leyva,L03518135
+TC2007B-5,Integración de seguridad informática en redes y sistemas de software,8,"1,2",5,160,1,Bloque,Ago-Dic,5,Calidad en el software,30,Juan Alvarado,L03524672
+TC2007B-5,Integración de seguridad informática en redes y sistemas de software,8,"1,2",5,160,1,Bloque,Ago-Dic,5,Calidad en el software,30,Luis Guadarrama,L03545506
+TC2007B-6,Integración de seguridad informática en redes y sistemas de software,8,"1,2",5,160,1,Bloque,Ago-Dic,6,Soporte a sistemas de software,20,Juan Alvarado,L03524672
+TC2007B-6,Integración de seguridad informática en redes y sistemas de software,8,"1,2",5,160,1,Bloque,Ago-Dic,6,Soporte a sistemas de software,20,Luis Guadarrama,L03545506
+TC2008B-1,Modelación de sistemas multiagentes con gráficas computacionales,4,3,5,80,1,Bloque,Ago-Dic,1,Agentes inteligentes,8,Roberto Leyva,L03518135
+TC2008B-1,Modelación de sistemas multiagentes con gráficas computacionales,4,3,5,80,1,Bloque,Ago-Dic,1,Agentes inteligentes,8,Mauricio Paletta,L03542594
+TC2008B-2,Modelación de sistemas multiagentes con gráficas computacionales,4,3,5,80,1,Bloque,Ago-Dic,2,Toma de decisiones multiagentes,12,Roberto Leyva,L03518135
+TC2008B-2,Modelación de sistemas multiagentes con gráficas computacionales,4,3,5,80,1,Bloque,Ago-Dic,2,Toma de decisiones multiagentes,12,Mauricio Paletta,L03542594
+TC2008B-3,Modelación de sistemas multiagentes con gráficas computacionales,4,3,5,80,1,Bloque,Ago-Dic,3,Introducción a las gráficas computacionales y bibliotecas gráficas,12,Pedro Hernandez,L03546291
+TC2008B-3,Modelación de sistemas multiagentes con gráficas computacionales,4,3,5,80,1,Bloque,Ago-Dic,3,Introducción a las gráficas computacionales y bibliotecas gráficas,12,Ivan Olmos,L01193656
+TC2008B-4,Modelación de sistemas multiagentes con gráficas computacionales,4,3,5,80,1,Bloque,Ago-Dic,4,Introducción al uso de bibliotecas gráficas,12,Pedro Hernandez,L03546291
+TC2008B-4,Modelación de sistemas multiagentes con gráficas computacionales,4,3,5,80,1,Bloque,Ago-Dic,4,Introducción al uso de bibliotecas gráficas,12,Ivan Olmos,L01193656
+TC2008B-5,Modelación de sistemas multiagentes con gráficas computacionales,4,3,5,80,1,Bloque,Ago-Dic,5,Fundamentos matemáticos,12,Pedro Hernandez,L03546291
+TC2008B-5,Modelación de sistemas multiagentes con gráficas computacionales,4,3,5,80,1,Bloque,Ago-Dic,5,Fundamentos matemáticos,12,Ivan Olmos,L01193656
+TC2008B-6,Modelación de sistemas multiagentes con gráficas computacionales,4,3,5,80,1,Bloque,Ago-Dic,6,Simulación y proceso del dibujo (pipeline clásico),12,Pedro Hernandez,L03546291
+TC2008B-6,Modelación de sistemas multiagentes con gráficas computacionales,4,3,5,80,1,Bloque,Ago-Dic,6,Simulación y proceso del dibujo (pipeline clásico),12,Ivan Olmos,L01193656
+TC2008B-7,Modelación de sistemas multiagentes con gráficas computacionales,4,3,5,80,1,Bloque,Ago-Dic,7,Programación avanzada en el GPU,12,Israel Tabarez,L03532458
+TC3001B,Desarrollo de software,18,"1,2,3",6,360,,Materia,,,,,,
+TC3002B-1,Desarrollo de aplicaciones avanzadas de ciencias computacionales,6,2,8,120,1,Bloque,Feb-Jun,1,Metodología de investigación,20,Juan Alvarado,L03524672
+TC3002B-1,Desarrollo de aplicaciones avanzadas de ciencias computacionales,6,2,8,120,1,Bloque,Feb-Jun,1,Metodología de investigación,20,Roberto Leyva,L03518135
+TC3002B-1,Desarrollo de aplicaciones avanzadas de ciencias computacionales,6,2,8,120,1,Bloque,Feb-Jun,1,Metodología de investigación,20,Mauricio Paletta,L03542594
+TC3002B-2,Desarrollo de aplicaciones avanzadas de ciencias computacionales,6,2,8,120,1,Bloque,Feb-Jun,2,Inteligencia artificial,40,Roberto Leyva,L03518135
+TC3002B-2,Desarrollo de aplicaciones avanzadas de ciencias computacionales,6,2,8,120,1,Bloque,Feb-Jun,2,Inteligencia artificial,40,Mauricio Paletta,L03542594
+TC3002B-3,Desarrollo de aplicaciones avanzadas de ciencias computacionales,6,2,8,120,1,Bloque,Feb-Jun,3,Compiladores,30,Mauricio Paletta,L03542594
+TC3002B-3,Desarrollo de aplicaciones avanzadas de ciencias computacionales,6,2,8,120,1,Bloque,Feb-Jun,3,Compiladores,30,José Aguilera,L00534370
+TC3002B-4,Desarrollo de aplicaciones avanzadas de ciencias computacionales,6,2,8,120,1,Bloque,Feb-Jun,4,Métodos cuantitativos y simulación,30,Pedro Hernandez,L03546291
+TC3003B-1,Implementación de redes de área amplia y servicios distribuidos,6,3,8,120,1,Bloque,Feb-Jun,1,Conceptos para la interconexión de redes,10,Víctor Mañón,L00271734
+TC3003B-1,Implementación de redes de área amplia y servicios distribuidos,6,3,8,120,1,Bloque,Feb-Jun,1,Conceptos para la interconexión de redes,10,Juan Alvarado,L03524672
+TC3003B-1,Implementación de redes de área amplia y servicios distribuidos,6,3,8,120,1,Bloque,Feb-Jun,1,Conceptos para la interconexión de redes,10,Roberto Leyva,L03518135
+TC3003B-1,Implementación de redes de área amplia y servicios distribuidos,6,3,8,120,1,Bloque,Feb-Jun,1,Conceptos para la interconexión de redes,10,Mauricio Paletta,L03542594
+TC3003B-1,Implementación de redes de área amplia y servicios distribuidos,6,3,8,120,1,Bloque,Feb-Jun,1,Conceptos para la interconexión de redes,10,Yerly Flores,L03032035
+TC3003B-2,Implementación de redes de área amplia y servicios distribuidos,6,3,8,120,1,Bloque,Feb-Jun,2,Conceptos de redes de área amplia,16,Víctor Mañón,L00271734
+TC3003B-2,Implementación de redes de área amplia y servicios distribuidos,6,3,8,120,1,Bloque,Feb-Jun,2,Conceptos de redes de área amplia,16,Juan Alvarado,L03524672
+TC3003B-2,Implementación de redes de área amplia y servicios distribuidos,6,3,8,120,1,Bloque,Feb-Jun,2,Conceptos de redes de área amplia,16,Roberto Leyva,L03518135
+TC3003B-2,Implementación de redes de área amplia y servicios distribuidos,6,3,8,120,1,Bloque,Feb-Jun,2,Conceptos de redes de área amplia,16,Mauricio Paletta,L03542594
+TC3003B-2,Implementación de redes de área amplia y servicios distribuidos,6,3,8,120,1,Bloque,Feb-Jun,2,Conceptos de redes de área amplia,16,Yerly Flores,L03032035
+TC3003B-3,Implementación de redes de área amplia y servicios distribuidos,6,3,8,120,1,Bloque,Feb-Jun,3,Tecnologías emergentes para sistemas distribuidos en redes de área amplia,34,Roberto Leyva,L03518135
+TC3003B-4,Implementación de redes de área amplia y servicios distribuidos,6,3,8,120,1,Bloque,Feb-Jun,4,Diseño y configuración de redes de área amplia,60,Víctor Mañón,L00271734
+TC3003B-4,Implementación de redes de área amplia y servicios distribuidos,6,3,8,120,1,Bloque,Feb-Jun,4,Diseño y configuración de redes de área amplia,60,Juan Alvarado,L03524672
+TC3003B-4,Implementación de redes de área amplia y servicios distribuidos,6,3,8,120,1,Bloque,Feb-Jun,4,Diseño y configuración de redes de área amplia,60,Roberto Leyva,L03518135
+TC3003B-4,Implementación de redes de área amplia y servicios distribuidos,6,3,8,120,1,Bloque,Feb-Jun,4,Diseño y configuración de redes de área amplia,60,Mauricio Paletta,L03542594
+TC3003B-4,Implementación de redes de área amplia y servicios distribuidos,6,3,8,120,1,Bloque,Feb-Jun,4,Diseño y configuración de redes de área amplia,60,Yerly Flores,L03032035
+TC3004B-1,Planeación de sistemas de software,6,1,8,120,1,Bloque,Feb-Jun,1,Procesos para el desarrollo de software comercial,12,Juan Alvarado,L03524672
+TC3004B-1,Planeación de sistemas de software,6,1,8,120,1,Bloque,Feb-Jun,1,Procesos para el desarrollo de software comercial,12,Luis Guadarrama,L03545506
+TC3004B-2,Planeación de sistemas de software,6,1,8,120,1,Bloque,Feb-Jun,2,Visión de estándares internacionales para el desarrollo de software,24,Juan Alvarado,L03524672
+TC3004B-2,Planeación de sistemas de software,6,1,8,120,1,Bloque,Feb-Jun,2,Visión de estándares internacionales para el desarrollo de software,24,Octavio Silva,L03557809
+TC3004B-3,Planeación de sistemas de software,6,1,8,120,1,Bloque,Feb-Jun,3,Administración inicial de proyectos de desarrollo de software,24,Juan Alvarado,L03524672
+TC3004B-3,Planeación de sistemas de software,6,1,8,120,1,Bloque,Feb-Jun,3,Administración inicial de proyectos de desarrollo de software,24,Luis Guadarrama,L03545506
+TC3004B-3,Planeación de sistemas de software,6,1,8,120,1,Bloque,Feb-Jun,3,Administración inicial de proyectos de desarrollo de software,24,María Mirafuentes,L03069916
+TC3004B-4,Planeación de sistemas de software,6,1,8,120,1,Bloque,Feb-Jun,4,Requerimientos de software,30,Juan Alvarado,L03524672
+TC3004B-4,Planeación de sistemas de software,6,1,8,120,1,Bloque,Feb-Jun,4,Requerimientos de software,30,Luis Guadarrama,L03545506
+TC3004B-4,Planeación de sistemas de software,6,1,8,120,1,Bloque,Feb-Jun,4,Requerimientos de software,30,María Mirafuentes,L03069916
+TC3004B-5,Planeación de sistemas de software,6,1,8,120,1,Bloque,Feb-Jun,5,Calidad del software en etapas iniciales,30,Juan Alvarado,L03524672
+TC3004B-5,Planeación de sistemas de software,6,1,8,120,1,Bloque,Feb-Jun,5,Calidad del software en etapas iniciales,30,Luis Guadarrama,L03545506
+TC3004B-5,Planeación de sistemas de software,6,1,8,120,1,Bloque,Feb-Jun,5,Calidad del software en etapas iniciales,30,María Mirafuentes,L03069916
+TC3005B-1,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,1,Administración avanzada de proyectos de desarrollo de software,20,Juan Alvarado,L03524672
+TC3005B-1,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,1,Administración avanzada de proyectos de desarrollo de software,20,Luis Guadarrama,L03545506
+TC3005B-1,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,1,Administración avanzada de proyectos de desarrollo de software,20,María Mirafuentes,L03069916
+TC3005B-2,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,2,Diseño y arquitectura del software,50,Víctor Mañón,L00271734
+TC3005B-2,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,2,Diseño y arquitectura del software,50,Juan Alvarado,L03524672
+TC3005B-2,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,2,Diseño y arquitectura del software,50,Roberto Leyva,L03518135
+TC3005B-2,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,2,Diseño y arquitectura del software,50,José Aguilera,L00534370
+TC3005B-2,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,2,Diseño y arquitectura del software,50,Pedro Hernandez,L03546291
+TC3005B-3,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,3,Desarrollo avanzado de aplicaciones Web,60,Víctor Mañón,L00271734
+TC3005B-3,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,3,Desarrollo avanzado de aplicaciones Web,60,Roberto Vera,L03556523
+TC3005B-4,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,4,Bases de datos avanzadas,40,Víctor Mañón,L00271734
+TC3005B-4,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,4,Bases de datos avanzadas,40,Mauricio Paletta,L03542594
+TC3005B-4,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,4,Bases de datos avanzadas,40,Pedro Hernandez,L03546291
+TC3005B-5,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,5,Calidad del software,40,Juan Alvarado,L03524672
+TC3005B-5,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,5,Calidad del software,40,Luis Guadarrama,L03545506
+TC3005B-5,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,5,Calidad del software,40,María Mirafuentes,L03069916
+TC3005B-6,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,6,Implantación del software,20,Juan Alvarado,L03524672
+TC3005B-6,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,6,Implantación del software,20,Luis Guadarrama,L03545506
+TC3005B-7,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,7,Cierre de proyecto,10,Juan Alvarado,L03524672
+TC3005B-7,Desarrollo e implantación de sistemas de software,12,"2,3",8,240,1,Bloque,Feb-Jun,7,Cierre de proyecto,10,Luis Guadarrama,L03545506
+TI1015,Análisis de requerimientos de software,1,3,3,20,1,Materia,Ago-Dic,,,,Juan Alvarado,L03524672
+TI1015,Análisis de requerimientos de software,1,3,3,20,1,Materia,Ago-Dic,,,,Roberto Leyva,L03518135
+TI1015,Análisis de requerimientos de software,1,3,3,20,1,Materia,Ago-Dic,,,,José Aguilera,L00534370
+TI1015,Análisis de requerimientos de software,1,3,3,20,1,Materia,Ago-Dic,,,,Luis Guadarrama ,L03545506
+TI1015,Análisis de requerimientos de software,1,3,3,20,1,Materia,Ago-Dic,,,,Pedro Hernandez,L03546291
+TI1015,Análisis de requerimientos de software,1,3,3,20,1,Materia,Ago-Dic,,,,María Mirafuentes,L03069916
+TI1015,Análisis de requerimientos de software,1,3,3,20,1,Materia,Ago-Dic,,,,Roberto Vera,L03556523
+TI3001C,Analítica de datos y herramientas de inteligencia artificial I,7,"1,2,3",7,140,,Materia,,,,,,
+TI3002C,Analítica de datos y herramientas de inteligencia artificial II,13,"1,2,3",7,260,,Materia,,,,,,
+TI3005B-1,Trasformación digital de organizaciones de la sociedad civil,6,1,8,120,1,Bloque,Feb-Jun,1,Definición y planeación de un proyecto de transformación digital,30,Juan Alvarado,L03524672
+TI3005B-1,Trasformación digital de organizaciones de la sociedad civil,6,1,8,120,1,Bloque,Feb-Jun,1,Definición y planeación de un proyecto de transformación digital,30,Luis Guadarrama,L03545506
+TI3005B-1,Trasformación digital de organizaciones de la sociedad civil,6,1,8,120,1,Bloque,Feb-Jun,1,Definición y planeación de un proyecto de transformación digital,30,María Mirafuentes,L03069916
+TI3005B-2,Trasformación digital de organizaciones de la sociedad civil,6,1,8,120,1,Bloque,Feb-Jun,2,Implementación de la transformación digital,30,Juan Alvarado,L03524672
+TI3005B-2,Trasformación digital de organizaciones de la sociedad civil,6,1,8,120,1,Bloque,Feb-Jun,2,Implementación de la transformación digital,30,Mauricio Paletta,L03542594
+TI3005B-2,Trasformación digital de organizaciones de la sociedad civil,6,1,8,120,1,Bloque,Feb-Jun,2,Implementación de la transformación digital,30,José Aguilera,L00534370
+TI3005B-2,Trasformación digital de organizaciones de la sociedad civil,6,1,8,120,1,Bloque,Feb-Jun,2,Implementación de la transformación digital,30,Luis Guadarrama,L03545506
+TI3005B-2,Trasformación digital de organizaciones de la sociedad civil,6,1,8,120,1,Bloque,Feb-Jun,2,Implementación de la transformación digital,30,Pedro Hernandez,L03546291
+TI3005B-2,Trasformación digital de organizaciones de la sociedad civil,6,1,8,120,1,Bloque,Feb-Jun,2,Implementación de la transformación digital,30,Roberto Vera,L03556523
+TI3005B-3,Trasformación digital de organizaciones de la sociedad civil,6,1,8,120,1,Bloque,Feb-Jun,3,Cómputo en la nube,60,Roberto Leyva,L03518135
