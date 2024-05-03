@@ -32,7 +32,7 @@ def verificar_horarios_continuos(cromosoma):
             final = datetime.strptime(horas_fin[i], "%H:%M").time()
 
         if final < inicio:
-            penalizaciones += random.uniform(9.1, 10.1)
+            penalizaciones += 1
 
         """# Verificar si los horarios son continuos
         if i > 0:
@@ -53,11 +53,11 @@ def verificar_horarios_continuos(cromosoma):
 import csv
 
 def obtener_semestre(uf, archivo_csv):
-    with open(archivo_csv, newline='') as csvfile:
+    with open(archivo_csv, newline='', encoding='utf-8-sig') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             #print(row)
-            if row['ï»¿Clave'] == uf:
+            if row['Clave'] == uf:
                 return int(row['Semestre'])
     return None
 

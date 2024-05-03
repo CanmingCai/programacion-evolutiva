@@ -9,13 +9,13 @@ from generar_genes import horario_profesor
 import csv
 # No se pueden programar grupos en la franja que va desde las 13:00 hasta las 15:00 horas de lunes a viernes.
 # Definir el rango de tiempo a verificar (de 13:00 a 15:00)
-inicio_verificar = "13:00"
-fin_verificar = "15:00"
 
 
-def verificar_solapamientos_cromosoma(cromosoma, inicio_verificar, fin_verificar):
+
+def verificar_solapamientos_cromosoma(cromosoma):
     penalizaciones = 0
-
+    inicio_verificar = "13:00"
+    fin_verificar = "15:00"
     # Convertir los horarios de verificación a objetos de tiempo
     inicio_verificar = datetime.strptime(inicio_verificar, "%H:%M").time()
     fin_verificar = datetime.strptime(fin_verificar, "%H:%M").time()
@@ -170,22 +170,22 @@ def contabilizar_horas(diccionarios):
 def revisar_horas_excedidas(diccionarios, archivo_csv):
     horas_por_uf=contabilizar_horas(diccionarios)
     pen=0
-    with open(archivo_csv, newline='') as csvfile:
+    with open(archivo_csv, newline='', encoding='utf-8-sig') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            clave_uf_csv = row['ï»¿Clave'].strip()  # Eliminar espacios en blanco alrededor de la clave de la UF
+            clave_uf_csv = row['Clave'].strip()  # Eliminar espacios en blanco alrededor de la clave de la UF
             horas_csv = float(row['Horas'])
             for clave_uf, horas_contadas in horas_por_uf.items():
                 if clave_uf[0] == clave_uf_csv:
                     if horas_contadas > horas_csv:
-                        print(f"¡Alerta! Horas excedidas para la UF {clave_uf[0]}, grupo {clave_uf[1]}. Horas contadas: {horas_contadas}, horas permitidas: {horas_csv}")
+                        #print(f"¡Alerta! Horas excedidas para la UF {clave_uf[0]}, grupo {clave_uf[1]}. Horas contadas: {horas_contadas}, horas permitidas: {horas_csv}")
                         pen=1
     return pen
 
 
 def revisar_disponibilidad_profesores(diccionarios, archivo_csv):
     pen=0
-    with open(archivo_csv, newline='') as csvfile:
+    with open(archivo_csv, newline='', encoding='utf-8-sig') as csvfile:
         reader = csv.DictReader(csvfile)
         for diccionario in diccionarios:
             uf_clave = diccionario['UF'][0]
@@ -198,7 +198,7 @@ def revisar_disponibilidad_profesores(diccionarios, archivo_csv):
                     break
                 elif row['Clave'].strip() == uf_clave and row[profesor] != 'X':
             
-                    print(f"¡Alerta! El profesor {profesor} no está disponible para dar clases en la UF {uf_clave}.")
+                    #print(f"¡Alerta! El profesor {profesor} no está disponible para dar clases en la UF {uf_clave}.")
                     pen=1
     return pen
 

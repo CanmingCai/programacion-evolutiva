@@ -12,7 +12,8 @@ def funcion_costos(p_leves, p_duras):
 # obtener p_leves y p_duras de un cromosoma
 def costo_cromosoma(cromosoma):
     p_leves = verificar_horarios_continuos(cromosoma) + revisar_horarios_semestres(cromosoma, "UDF.csv")
-    p_duras = verificar_horas(cromosoma) + verificar_solapamientos_cromosoma(cromosoma) + revisar_horarios_colision(cromosoma) + contabilizar_horas(cromosoma) + revisar_horas_excedidas(cromosoma,???) + revisar_disponibilidad_profesores(cromosoma, ???)
+    p_duras = verificar_horas(cromosoma) + verificar_solapamientos_cromosoma(cromosoma) + revisar_horarios_colision(cromosoma)  
+    #+ revisar_horas_excedidas(cromosoma,???) + revisar_disponibilidad_profesores(cromosoma, ???)
     return funcion_costos(p_leves, p_duras)
 
 # # Genera la población

@@ -1,6 +1,7 @@
 import numpy as np
 import random
 import csv
+import time
 from generar_genes import generar_cromosomas
 from costos import costo_cromosoma
 
@@ -42,22 +43,33 @@ def torneo_seleccion(poblacion, costo, cantidad=25):
     
     return selec_cromosomas, min_costo_cromosoma, min_costo
 
+def selec_min_cromosoma(veces):
 
-# Utiliza la función torneo_selection para seleccionar dos veces
-selec_cromosomas_1, min_costo_cromosoma_1, min_cost_1 = torneo_seleccion(poblacion1, costo)
-# Encuentra los índices de los cromosomas seleccionados en la población
-selec_indices_1 = [poblacion1.index(cromosoma) for cromosoma in selec_cromosomas_1]
+    if veces == 1:
+        # Utiliza la función torneo_selection para seleccionar dos veces
+        selec_cromosomas_1, min_costo_cromosoma_1, min_cost_1 = torneo_seleccion(poblacion1, costo)
+        # Encuentra los índices de los cromosomas seleccionados en la población
+        selec_indices_1 = [poblacion1.index(cromosoma) for cromosoma in selec_cromosomas_1]
+        return min_costo_cromosoma_1
+    else:
+        # Utiliza la función torneo_selection para seleccionar dos veces
+        selec_cromosomas_1, min_costo_cromosoma_1, min_cost_1 = torneo_seleccion(poblacion1, costo)
+        # Encuentra los índices de los cromosomas seleccionados en la población
+        selec_indices_1 = [poblacion1.index(cromosoma) for cromosoma in selec_cromosomas_1]
 
-# Excluye los cromosomas seleccionados en la primera vez de la selección siguiente
-indices_restantes = [i for i in range(len(poblacion1)) if i not in selec_indices_1]
-selec_cromosomas_2, min_costo_cromosoma_2, min_costo_2 = torneo_seleccion([poblacion1[i] for i in indices_restantes], 
-                                                                         [costo[i] for i in indices_restantes])
-# Encuentra los índices de los cromosomas seleccionados en la población
-selec_indices_2 = [indices_restantes[i] for i in range(len(selec_cromosomas_2))]
+        # Excluye los cromosomas seleccionados en la primera vez de la selección siguiente
+        indices_restantes = [i for i in range(len(poblacion1)) if i not in selec_indices_1]
+        selec_cromosomas_2, min_costo_cromosoma_2, min_costo_2 = torneo_seleccion([poblacion1[i] for i in indices_restantes], 
+                                                                                [costo[i] for i in indices_restantes])
+        return min_costo_cromosoma_1, min_costo_cromosoma_2
 
-# Encuentra los índices de los dos cromosomas con el costo mínimo en la población
-min_costo_index_1 = poblacion1.index(min_costo_cromosoma_1)
-min_costo_index_2 = indices_restantes.index(poblacion1.index(min_costo_cromosoma_2)) if min_costo_cromosoma_2 in poblacion1 else -1
+
+# # Encuentra los índices de los cromosomas seleccionados en la población
+# selec_indices_2 = [indices_restantes[i] for i in range(len(selec_cromosomas_2))]
+
+# # Encuentra los índices de los dos cromosomas con el costo mínimo en la población
+# min_costo_index_1 = poblacion1.index(min_costo_cromosoma_1)
+# min_costo_index_2 = indices_restantes.index(poblacion1.index(min_costo_cromosoma_2)) if min_costo_cromosoma_2 in poblacion1 else -1
 
 # print("Cromosomas seleccionados 1:")
 # # Imprime los índices de los cromosomas seleccionados
@@ -104,7 +116,7 @@ def mutacion(cromosoma):
     
     # Verifica si genes_mutar está vacío
     if len(genes_mutar) == 0:
-        print("Error: No se generaron genes para mutar")
+        #print("Error: No se generaron genes para mutar")
         return hijo
     
     print("Genes a mutar:", [cromosoma[i] for i in genes_mutar])
@@ -118,14 +130,14 @@ def mutacion(cromosoma):
             for curso in cursos:
                 if curso['CLAVE'] == hijo[genes_mutar[0]]["UF"][0]:
                     hijo[genes_mutar[0]]["UF"] = np.random.choice(UF) + ", " + str(np.random.randint(1, curso['# GPOs']))
-                    print("se mutó en materia")
+                    #print("se mutó en materia")
         else:
             #si es bloque, cambia el tema del bloque correspondiente
             #['TC2008B-3', 1]
             for bloque in bloques:
                 if hijo[genes_mutar[0]]["UF"][0] in bloques[bloque]:
                     hijo[genes_mutar[0]]["UF"] = np.random.choice(bloques[bloque]) + ", " + str("1")
-                    print("se mutó en bloque")
+                    #print("se mutó en bloque")
             
     elif atributo == 1:
         print("============================ se mudo en periodo ===========================")
@@ -142,25 +154,40 @@ def mutacion(cromosoma):
             hora_inicio.append(str(hora_random) + ":" + str("00"))
         hijo[genes_mutar[0]]["Hora_inicio"] = hora_inicio
     elif atributo == 4:
-        print("============================ se mudo en hora fin ===========================")
         # hora_fin = hora inicio + 2 a 4 horas
         hora_fin = []
-        for i in range(5):
-            hora_random = np.random.randint(2, 4)
-            hora_fin.append(str(int(hijo[genes_mutar[0]]["Hora_inicio"][i][0:2]) + hora_random) + ":" + str("00"))
+        for hora_inicio in hijo[genes_mutar[0]]["Hora_inicio"]:
+            hora_inicio_hour = int(hora_inicio.split(":")[0])
+            hora_fin_hour = min(hora_inicio_hour + random.randint(2, 4), 21)  # Limiting to 21 to avoid exceeding 24 hours
+            hora_fin.append(f"{hora_fin_hour:02d}:00")
         hijo[genes_mutar[0]]["Hora_fin"] = hora_fin
     return hijo
 
  
 # min_costo_cromosoma_1 = [0, 0, 0, 0, 0]
 # min_costo_cromosoma_2 = [1, 1, 1, 1, 1]
-hijo = cruce_uniforme(min_costo_cromosoma_1, min_costo_cromosoma_2)
+#hijo = cruce_uniforme(min_costo_cromosoma_1, min_costo_cromosoma_2)
 
-print("Padre 1:", min_costo_cromosoma_1)
-print("")
-print("Padre 2:", min_costo_cromosoma_2)
-print("")
-print("Hijo:", hijo)
+# hacer cruce uniforme y llenar los hijo en la nueva población de tamaño 100 y evaluar el costo de cada hijo
+# new_poblacion = []
+# new_costo = []
+# for i in range(100):
+#     costo_hijo = 0
+#     hijo = cruce_uniforme(min_costo_cromosoma_1, min_costo_cromosoma_2)
+#     costo_hijo = costo_cromosoma(hijo)
+#     new_costo.append(costo_hijo)
+#     new_poblacion.append(hijo)
+
+# print(" =========  Costos de la nueva población: =================")
+# for i in range(len(new_costo)):
+#     print(i, new_costo[i])
+
+
+# print("Padre 1:", min_costo_cromosoma_1)
+# print("")
+# print("Padre 2:", min_costo_cromosoma_2)
+# print("")
+#print("Hijo:", hijo)
 
 # mutante = mutacion(min_costo_cromosoma_1)
 # #print("Mutante:", mutante)
@@ -177,4 +204,47 @@ print("Hijo:", hijo)
 # for i in range(len(new_poblacion1)):
 #     print(new_poblacion1[i])
 
+
+# aleatoria elegir cruce uniforme o mutación para evolucionar la población
+def seleccion_operador():
+    operador = np.random.randint(0, 2)
+    if operador == 0:
+        return "cruce_uniforme"
+    else:
+        return "mutacion"
+
+
+
+# si es cruce_uniforme, hacer 2 torneos
+def evolucion(poblacion, costo):
+    nueva_poblacion = []
+    nueva_costo = []
+    # repetir hasta que se llene la nueva población
+    for i in range(100):
+        costo_hijo = 0
+        if seleccion_operador() == "cruce_uniforme":
+            padre1, padre2 = selec_min_cromosoma(2)
+            hijo = cruce_uniforme(padre1, padre2)
+            costo_hijo = costo_cromosoma(hijo)
+            nueva_poblacion.append(hijo)
+            nueva_costo.append(costo_hijo)
+        else:
+            padre = selec_min_cromosoma(1)
+            hijo = mutacion(padre)
+            print(" ========================= cromosomas Mutante: =======================")
+            print(hijo)
+            costo_hijo = costo_cromosoma(hijo)
+            nueva_poblacion.append(hijo)
+            nueva_costo.append(costo_hijo)
+    return nueva_poblacion, nueva_costo
+
+
+
+# repetir 5 veces la evolución de la población
+for i in range(10):
+    poblacion1, costo = evolucion(poblacion1, costo)
+    print("costo de la población en la iteración", i)
+    for i in range(len(costo)):
+        print(i, costo[i])
+    print("")
 
