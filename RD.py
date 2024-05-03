@@ -12,12 +12,10 @@ inicio_verificar = "13:00"
 fin_verificar = "15:00"
 
 
-def verificar_solapamientos_cromosoma(cromosoma):
-    coincidencias = 0
+def verificar_solapamientos_cromosoma(cromosoma, inicio_verificar, fin_verificar):
+    penalizaciones = 0
 
     # Convertir los horarios de verificación a objetos de tiempo
-    inicio_verificar = "13:00"
-    fin_verificar = "15:00"
     inicio_verificar = datetime.strptime(inicio_verificar, "%H:%M").time()
     fin_verificar = datetime.strptime(fin_verificar, "%H:%M").time()
 
@@ -44,13 +42,16 @@ def verificar_solapamientos_cromosoma(cromosoma):
 
             # Verificar si hay solapamiento entre los intervalos
             if inicio < fin_verificar and final > inicio_verificar:
-                coincidencias += 1
-
-    return coincidencias
+                penalizaciones += random.uniform(9.1, 10.1)
+    if penalizaciones != 0:
+        return 1
+    else:
+        return 0
 
 
 ######################################################################
 # Las materias se deben programar en no más de dos horas diarias y en los pares de días lunes-jueves o martes-viernes.
+
 
 # Verificación de las horas
 def verificar_horas(cromosoma):
@@ -88,13 +89,16 @@ def verificar_horas(cromosoma):
 
         # Verificar si la diferencia es exactamente de 2 horas
         elif diferencia != timedelta(hours=2):
-            penalizaciones += 1
+            penalizaciones += random.uniform(9.1, 10.1)
 
         # Verificar que los miércoles (posición 2) no tengan horas
         elif i == 2 and (inicio != time(0, 0) or final != time(0, 0)):
-            penalizaciones += 1
+            penalizaciones += random.uniform(9.1, 10.1)
+    if penalizaciones != 0:
+        return 1
+    else:
+        return 0
 
-    return penalizaciones
 
 ############################################################################################################
 
@@ -201,39 +205,51 @@ def revisar_disponibilidad_profesores(diccionarios, archivo_csv):
 
 ############################################################################################################
 
-#Una clase no puede iniciar en horas pares, a menos que la hora impar inmediatamente superior ya haya sido asignada a otro profesor.
+# Una clase no puede iniciar en horas pares, a menos que la hora impar inmediatamente superior ya haya sido asignada a otro profesor.
 
-""""
-# Verificación de las horas
-def verificar_horas_pares(cromosoma):
-    penalizaciones = 0
+def hora_impar_superior(hora):
+    # Obtiene la hora en formato de 24 horas y devuelve la próxima hora impar
+    hora_dt = datetime.strptime(hora, "%H:%M")
+    siguiente_hora = hora_dt + timedelta(hours=1)
+    if siguiente_hora.hour % 2 == 0:  # Si es par, avanza una hora más
+        siguiente_hora += timedelta(hours=1)
+    return siguiente_hora.strftime("%H:%M")
 
-    # Iterar por cada curso en el cromosoma
-    for curso in cromosoma:
-        # Verificar si curso es una lista, si es así, convertirlo a un diccionario
-        if isinstance(curso, list):
-            curso = {
-                "UF": curso[0],
-                "Periodo": curso[1],
-                "Profesor": curso[2],
-                "Hora_inicio": curso[3],
-                "Hora_fin": curso[4],
-            }
 
-        # Obtener los horarios de inicio y fin del curso
+def validar_horario(cursos):
+    penalizacion = 0
+    for curso in cursos:
         horas_inicio = curso["Hora_inicio"]
-        horas_fin = curso["Hora_fin"]
-        
-        # Verificar los horarios de cada día de la semana
-        for i in range(5):
-            inicio = datetime.strptime(horas_inicio[i], "%H:%M").time()
-            final = datetime.strptime(horas_fin[i], "%H:%M").time()
+        bloque = curso["UF"]  # Suponiendo que "UF" indica el bloque del curso
+        profesor = curso["Profesor"]
 
-        if horas_inicio.hour % 2 == 0:
-            penalizaciones += 1
+        for hora_inicio in horas_inicio:
+            # Verificar si la hora de inicio es par
+            if hora_inicio[-2:] == "00":
+                hora_impar_superior_actual = hora_impar_superior(hora_inicio)
 
-    return penalizaciones
-    """
+                # Verificar si la hora impar superior está asignada a otro profesor
+                hora_impar_superior_asignada = False
+                for otro_curso in cursos:
+                    if (
+                        otro_curso["UF"] == bloque
+                        and otro_curso["Profesor"] != profesor
+                    ):
+                        if hora_impar_superior_actual in otro_curso["Hora_inicio"]:
+                            hora_impar_superior_asignada = True
+                            break
+
+                # Si la hora impar superior está asignada, imprimir mensaje
+                if hora_impar_superior_asignada:
+                    penalizacion += random.uniform(9.1, 10.1)
+                else:
+                    penalizacion = 0
+            else:
+                penalizacion = 0
+    if penalizacion != 0:
+        return 1
+    else:
+        return 0
 
 
 

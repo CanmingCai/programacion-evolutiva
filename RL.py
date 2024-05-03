@@ -32,7 +32,7 @@ def verificar_horarios_continuos(cromosoma):
             final = datetime.strptime(horas_fin[i], "%H:%M").time()
 
         if final < inicio:
-            penalizaciones += 1
+            penalizaciones += random.uniform(9.1, 10.1)
 
         """# Verificar si los horarios son continuos
         if i > 0:
@@ -42,8 +42,11 @@ def verificar_horarios_continuos(cromosoma):
             # Comparar la hora de inicio con el final anterior
             if inicio != final_anterior:
                 penalizaciones += 1"""
+    if penalizaciones != 0:
+        return 1
+    else:
+        return 0
 
-    return penalizaciones
 
 ############################################################################################################
 
@@ -86,6 +89,8 @@ def revisar_miercoles(cromosoma):
 
 # No asignar a un profesor más de 8 horas de clase por día
 from datetime import datetime
+
+############################################################################################################
 
 def convertir_a_datetime(horas):
     # Convertir cada cadena de hora a un objeto datetime
