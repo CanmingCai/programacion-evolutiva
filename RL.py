@@ -76,14 +76,44 @@ def revisar_horarios_semestres(diccionarios, archivo_csv):
     return pen
 ############################################################################################################
 # Buscar que no haya clase los miércoles
-def revisar_miercoles(arreglo):
+def revisar_miercoles(cromosoma):
     pen=0
-    for diccionario in arreglo:
+    for diccionario in cromosoma:
         hora_inicio = diccionario["Hora_inicio"]
         if hora_inicio[2] != "00:00":
             pen = 1
     return pen
 
+# No asignar a un profesor más de 8 horas de clase por día
+from datetime import datetime
+
+def convertir_a_datetime(horas):
+    # Convertir cada cadena de hora a un objeto datetime
+    return [datetime.strptime(hora, '%H:%M') for hora in horas]
+
+def verificar_duraciones(cromosoma):
+    duraciones_por_profesor = {}
+
+    # Calcular la duración de la clase para cada posición y actualizar el diccionario
+    for clase in cromosoma:
+        codigo_profesor = clase["Profesor"]
+        hora_inicio = convertir_a_datetime(clase["Hora_inicio"])
+        hora_fin = convertir_a_datetime(clase["Hora_fin"])
+        duracion_clase = [(fin - inicio).seconds / 3600 for inicio, fin in zip(hora_inicio, hora_fin)]
+
+        if codigo_profesor not in duraciones_por_profesor:
+            duraciones_por_profesor[codigo_profesor] = [0] * len(duracion_clase)
+
+        for i, duracion in enumerate(duracion_clase):
+            duraciones_por_profesor[codigo_profesor][i] += duracion
+
+    # Verificar que ninguna duración exceda las 8 horas por posición
+    for profesor, duraciones in duraciones_por_profesor.items():
+        for i, duracion in enumerate(duraciones):
+            if duracion > 8:
+                return 1
+
+    return 0
 
 
 
@@ -116,7 +146,8 @@ print(poblacion1)
 # Evaluar la población
 penalizaciones = []  # Initialize an empty list for penalizaciones
 for cromosoma in poblacion1:
-    penalizacion = revisar_horarios_semestres(cromosoma,"UDF.csv")
+    #penalizacion = revisar_horarios_semestres(cromosoma,"UDF.csv")
+    penalizacion = verificar_duraciones(cromosoma)
     penalizaciones.append(penalizacion)  # Append the penalization value to the list
     #print("cronosoma:", cromosoma)
     print("Penalizaciones:", penalizacion)
