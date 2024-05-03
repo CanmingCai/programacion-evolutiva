@@ -3,16 +3,20 @@ from datetime import time
 from datetime import datetime
 from datetime import time, timedelta
 
+from generar_genes import generar_cromosomas
+
 # No se pueden programar grupos en la franja que va desde las 13:00 hasta las 15:00 horas de lunes a viernes.
 # Definir el rango de tiempo a verificar (de 13:00 a 15:00)
 inicio_verificar = "13:00"
 fin_verificar = "15:00"
 
 
-def verificar_solapamientos_cromosoma(cromosoma, inicio_verificar, fin_verificar):
+def verificar_solapamientos_cromosoma(cromosoma):
     coincidencias = 0
 
     # Convertir los horarios de verificación a objetos de tiempo
+    inicio_verificar = "13:00"
+    fin_verificar = "15:00"
     inicio_verificar = datetime.strptime(inicio_verificar, "%H:%M").time()
     fin_verificar = datetime.strptime(fin_verificar, "%H:%M").time()
 
@@ -39,7 +43,7 @@ def verificar_solapamientos_cromosoma(cromosoma, inicio_verificar, fin_verificar
 
             # Verificar si hay solapamiento entre los intervalos
             if inicio < fin_verificar and final > inicio_verificar:
-                coincidencias += random.uniform(9.1, 10.1)
+                coincidencias += 1
 
     return coincidencias
 
@@ -126,3 +130,23 @@ def verificar_horas_pares(cromosoma):
 
     return penalizaciones
     """
+
+
+'''
+# Genera la población
+file1 = "Agosto-Diciembre.csv"
+poblacion1 = [generar_cromosomas(file1) for _ in range(100)]
+
+# Evaluar la población
+penalizaciones = []  # Initialize an empty list for penalizaciones
+for cromosoma in poblacion1:
+    penalizacion = verificar_horas(cromosoma)
+    penalizaciones.append(penalizacion)  # Append the penalization value to the list
+    print("cronosoma:", cromosoma)
+    print("Penalizaciones:", penalizacion)
+    print("")
+
+# penalizacion total de la poblacion
+penalizaciones_poblacion = sum(penalizaciones)
+print("Penalizaciones:", penalizaciones_poblacion)
+'''

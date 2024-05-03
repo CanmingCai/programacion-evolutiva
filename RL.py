@@ -3,6 +3,8 @@ from datetime import time
 from datetime import datetime
 from datetime import time, timedelta
 
+from generar_genes import generar_cromosomas
+
 
 # En lo posible garantizar que los bloques tengan un horario continuo a lo largo de un día (no haya fracciones o segmentos).
 def verificar_horarios_continuos(cromosoma):
@@ -43,5 +45,22 @@ def verificar_horarios_continuos(cromosoma):
 
     return penalizaciones
 
-
 ############################################################################################################
+'''
+# Genera la población
+file1 = "Agosto-Diciembre.csv"
+poblacion1 = [generar_cromosomas(file1) for _ in range(100)]
+
+# Evaluar la población
+penalizaciones = []  # Initialize an empty list for penalizaciones
+for cromosoma in poblacion1:
+    penalizacion = verificar_horarios_continuos(cromosoma)
+    penalizaciones.append(penalizacion)  # Append the penalization value to the list
+    print("cronosoma:", cromosoma)
+    print("Penalizaciones:", penalizacion)
+    print("")
+
+# penalizacion total de la poblacion
+penalizaciones_poblacion = sum(penalizaciones)
+print("Penalizaciones:", penalizaciones_poblacion)
+'''

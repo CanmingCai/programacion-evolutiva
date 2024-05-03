@@ -2,6 +2,7 @@ import numpy as np
 import random
 import csv
 from generar_genes import generar_cromosomas
+from costos import costo_cromosoma
 
 lista_profesor_materia = ['Victor Manion', 'Juan Alvarado', 'Roberto Leyva', 'Mauricio Paletta', 'Yerly Flores', 'Jaime Lopez', 'Jorge Rodriguez', 'Jose Aguilera', 'Luis Guadarrama', 'Pedro Hernandez', 'Maria Mirafuentes', 'Roberto Vera', 'Octavio Silva', 'Fernando Ruiz', 'Ivan Olmos', 'Israel Tabarez']
 periodos = [["P1,P2,P3"], ["P1,P2"], ["P2,P3"], ["P1"], ["P2"], ["P3"]]
@@ -18,16 +19,15 @@ bloques = { "TC1001B": ["TC1001B-1", "TC1001B-2", "TC1001B-3", "TC1001B-4", "TC1
             "TC3004B": ["TC3004B-1", "TC3004B-2", "TC3004B-3", "TC3004B-4", "TC3004B-5"],
             "TC3005B": ["TC3005B-1", "TC3005B-2", "TC3005B-3", "TC3005B-4", "TC3005B-5", "TC3005B-6", "TC3005B-7"],
         }
+# Genera la población
+file1 = "Agosto-Diciembre.csv"
+poblacion1 = [generar_cromosomas(file1) for _ in range(100)]
 
-# Genera los costos aleatorios
-costo = np.random.uniform(5, 40, 100)
+# evaluar el costo de los cromosomas 
+costo = [costo_cromosoma(cromosoma) for cromosoma in poblacion1]
 # Imprime el índice de la lista de costos
 for i in range(len(costo)):
     print(i, costo[i])
-
-# from evaluar_costo import costo_evaluar
-# costo_cromosomas = [costo_evaluar(cromosoma) for cromosoma in poblacion]
-# print("Costos de los cromosomas:")
 
 
 def torneo_seleccion(poblacion, costo, cantidad=25):
@@ -42,9 +42,6 @@ def torneo_seleccion(poblacion, costo, cantidad=25):
     
     return selec_cromosomas, min_costo_cromosoma, min_costo
 
-# Genera la población
-file1 = "Agosto-Diciembre.csv"
-poblacion1 = [generar_cromosomas(file1) for _ in range(100)]
 
 # Utiliza la función torneo_selection para seleccionar dos veces
 selec_cromosomas_1, min_costo_cromosoma_1, min_cost_1 = torneo_seleccion(poblacion1, costo)
@@ -155,21 +152,21 @@ def mutacion(cromosoma):
     return hijo
 
  
-# min_costo_cromosoma_1 = [1, 7, 3, 4, 5]
-# min_costo_cromosoma_2 = [6, 2, 8, 9, 10]
+# min_costo_cromosoma_1 = [0, 0, 0, 0, 0]
+# min_costo_cromosoma_2 = [1, 1, 1, 1, 1]
 hijo = cruce_uniforme(min_costo_cromosoma_1, min_costo_cromosoma_2)
 
-mutante = mutacion(min_costo_cromosoma_1)
-#print("Mutante:", mutante)
-for i in range(len(mutante)):
-    print(i, mutante[i])
+print("Padre 1:", min_costo_cromosoma_1)
+print("")
+print("Padre 2:", min_costo_cromosoma_2)
+print("")
+print("Hijo:", hijo)
 
+# mutante = mutacion(min_costo_cromosoma_1)
+# #print("Mutante:", mutante)
+# for i in range(len(mutante)):
+#     print(i, mutante[i])
 
-# print("Padre 1:", min_costo_cromosoma_1)
-# print("")
-# print("Padre 2:", min_costo_cromosoma_2)
-# print("")
-# print("Hijo:", hijo)
 
 #guardar los cromosomas seleccionados en una poblacion nueva
 # new_poblacion1 = []
