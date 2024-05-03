@@ -5,6 +5,7 @@ from datetime import time, timedelta
 
 from generar_genes import generar_cromosomas
 
+import csv
 # No se pueden programar grupos en la franja que va desde las 13:00 hasta las 15:00 horas de lunes a viernes.
 # Definir el rango de tiempo a verificar (de 13:00 a 15:00)
 inicio_verificar = "13:00"
@@ -95,8 +96,112 @@ def verificar_horas(cromosoma):
 
     return penalizaciones
 
+############################################################################################################
 
-####################################################################################3
+def revisar_horarios_colision(diccionarios):
+    horarios_profesores = {}
+    pen = 0
+
+    for diccionario in diccionarios:
+        uf = diccionario['UF'][0]
+        profesor = diccionario['Profesor']
+        horario_inicio = diccionario['Hora_inicio']
+        horario_fin = diccionario['Hora_fin']
+
+        # Si el profesor ya está en el diccionario de horarios
+        if profesor in horarios_profesores:
+            for dia in range(5):  # 0 representa lunes, 1 martes, ..., 4 viernes
+                for uf_guardada, horarios_uf_guardada in horarios_profesores[profesor].items():
+                    if uf != uf_guardada:
+                        for horario_guardado in horarios_uf_guardada[dia]:
+                            # Revisar si hay conflicto de horarios para cada día
+                            if (horario_inicio[dia] < horario_guardado[1] and horario_inicio[dia] >= horario_guardado[0]) or \
+                               (horario_fin[dia] > horario_guardado[0] and horario_fin[dia] <= horario_guardado[1]):
+                                #print(f"Conflicto de horario para el profesor {profesor} en las UFs {uf} y {uf_guardada}, el día {dia + 1}: {horario_inicio[dia]}-{horario_fin[dia]} coincide con {horario_guardado[0]}-{horario_guardado[1]}")
+                                pen = 1
+                                break
+                else:
+                    # No hay conflicto de horarios, agregar el nuevo horario para este día
+                    if profesor in horarios_profesores and uf in horarios_profesores[profesor]:
+                        horarios_profesores[profesor][uf][dia].append((horario_inicio[dia], horario_fin[dia]))
+                    else:
+                        horarios_profesores.setdefault(profesor, {}).setdefault(uf, [[(horario_inicio[i], horario_fin[i])] for i in range(5)])
+        else:
+            # El profesor no está en el diccionario, agregarlo con sus horarios para cada día
+            horarios_profesores[profesor] = {uf: [[(horario_inicio[i], horario_fin[i])] for i in range(5)]}
+
+    #print("Revisión de horarios completada.")
+    return pen
+
+############################################################################################################
+
+import csv
+import csv
+
+def contabilizar_horas(diccionarios):
+    horas_por_uf = {}
+    for diccionario in diccionarios:
+        clave_uf, grupo = diccionario['UF']  # Acceder a la clave y al grupo de la UF
+        horas_totales = 0
+        horario_inicio = diccionario['Hora_inicio']
+        horario_fin = diccionario['Hora_fin']
+
+        for dia in range(5):  # Lunes a viernes
+            hora_inicio = horario_inicio[dia]
+            hora_fin = horario_fin[dia]
+
+            if hora_inicio != '00:00' and hora_fin != '00:00':  # Verificar si hay horario para este día
+                # Calcular las horas para este día
+                horas_dia = (int(hora_fin[:2]) - int(hora_inicio[:2])) + (int(hora_fin[3:]) - int(hora_inicio[3:])) / 60
+                horas_totales += horas_dia
+
+        clave_grupo = (clave_uf, grupo)
+        if clave_grupo in horas_por_uf:
+            horas_por_uf[clave_grupo] += horas_totales
+        else:
+            horas_por_uf[clave_grupo] = horas_totales
+
+    return horas_por_uf
+
+def revisar_horas_excedidas(diccionarios, archivo_csv):
+    horas_por_uf=contabilizar_horas(diccionarios)
+    pen=0
+    with open(archivo_csv, newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            clave_uf_csv = row['ï»¿Clave'].strip()  # Eliminar espacios en blanco alrededor de la clave de la UF
+            horas_csv = float(row['Horas'])
+            for clave_uf, horas_contadas in horas_por_uf.items():
+                if clave_uf[0] == clave_uf_csv:
+                    if horas_contadas > horas_csv:
+                        print(f"¡Alerta! Horas excedidas para la UF {clave_uf[0]}, grupo {clave_uf[1]}. Horas contadas: {horas_contadas}, horas permitidas: {horas_csv}")
+                        pen=1
+    return pen
+
+
+def revisar_disponibilidad_profesores(diccionarios, archivo_csv):
+    pen=0
+    with open(archivo_csv, newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for diccionario in diccionarios:
+            uf_clave = diccionario['UF'][0]
+            profesor = diccionario['Profesor']
+            
+
+            for row in reader:
+                
+                if row['Clave'].strip() == uf_clave and row[profesor] == 'X':
+                    break
+                elif row['Clave'].strip() == uf_clave and row[profesor] != 'X':
+            
+                    print(f"¡Alerta! El profesor {profesor} no está disponible para dar clases en la UF {uf_clave}.")
+                    pen=1
+    return pen
+
+
+
+############################################################################################################
+
 #Una clase no puede iniciar en horas pares, a menos que la hora impar inmediatamente superior ya haya sido asignada a otro profesor.
 
 """"
@@ -132,21 +237,21 @@ def verificar_horas_pares(cromosoma):
     """
 
 
-'''
+
 # Genera la población
 file1 = "Agosto-Diciembre.csv"
-poblacion1 = [generar_cromosomas(file1) for _ in range(100)]
+poblacion1 = [generar_cromosomas(file1) for _ in range(5)]
 
 # Evaluar la población
 penalizaciones = []  # Initialize an empty list for penalizaciones
 for cromosoma in poblacion1:
-    penalizacion = verificar_horas(cromosoma)
+    penalizacion =  revisar_disponibilidad_profesores(cromosoma,"Profesores y Materias.csv")
     penalizaciones.append(penalizacion)  # Append the penalization value to the list
-    print("cronosoma:", cromosoma)
+    #print("cronosoma:", cromosoma)
     print("Penalizaciones:", penalizacion)
     print("")
 
-# penalizacion total de la poblacion
+#penalizacion total de la poblacion
 penalizaciones_poblacion = sum(penalizaciones)
 print("Penalizaciones:", penalizaciones_poblacion)
-'''
+

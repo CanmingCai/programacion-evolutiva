@@ -46,21 +46,73 @@ def verificar_horarios_continuos(cromosoma):
     return penalizaciones
 
 ############################################################################################################
-'''
-# Genera la población
+
+import csv
+
+def obtener_semestre(uf, archivo_csv):
+    with open(archivo_csv, newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            #print(row)
+            if row['ï»¿Clave'] == uf:
+                return int(row['Semestre'])
+    return None
+
+def revisar_horarios_semestres(diccionarios, archivo_csv):
+    pen=0
+    for diccionario in diccionarios:
+        uf = diccionario['UF'][0]
+        semestre = obtener_semestre(uf,"UDF.csv")
+        if semestre in range(1, 6):
+            profesor = diccionario['Profesor']
+            horario_inicio = diccionario['Hora_inicio']
+            horario_fin = diccionario['Hora_fin']
+
+            for dia in range(5):  # Lunes a viernes
+                # Verificar si el horario de inicio o fin es después de las 19:00
+                if horario_inicio[dia] > '19:00' or horario_fin[dia] > '19:00':
+                    #print(f"¡Alerta! El profesor {profesor} tiene una clase después de las 19:00 el día {dia + 1} en el semestre {semestre} para la UF {uf}.")
+                    pen=1
+    return pen
+############################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############################################################################################################
+
+#Genera la población
 file1 = "Agosto-Diciembre.csv"
-poblacion1 = [generar_cromosomas(file1) for _ in range(100)]
+poblacion1 = [generar_cromosomas(file1) for _ in range(2)]
 
 # Evaluar la población
 penalizaciones = []  # Initialize an empty list for penalizaciones
 for cromosoma in poblacion1:
-    penalizacion = verificar_horarios_continuos(cromosoma)
+    penalizacion = revisar_horarios_semestres(cromosoma,"UDF.csv")
     penalizaciones.append(penalizacion)  # Append the penalization value to the list
-    print("cronosoma:", cromosoma)
+    #print("cronosoma:", cromosoma)
     print("Penalizaciones:", penalizacion)
     print("")
 
 # penalizacion total de la poblacion
 penalizaciones_poblacion = sum(penalizaciones)
 print("Penalizaciones:", penalizaciones_poblacion)
-'''
