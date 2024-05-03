@@ -136,7 +136,6 @@ def revisar_horarios_colision(diccionarios):
 ############################################################################################################
 
 import csv
-import csv
 
 def contabilizar_horas(diccionarios):
     horas_por_uf = {}

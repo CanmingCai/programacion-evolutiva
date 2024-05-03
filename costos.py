@@ -1,6 +1,6 @@
 import random
-from RL import verificar_horarios_continuos
-from RD import verificar_solapamientos_cromosoma, verificar_horas
+from RL import verificar_horarios_continuos, revisar_horarios_semestres
+from RD import verificar_solapamientos_cromosoma, verificar_horas, revisar_horarios_colision, contabilizar_horas, revisar_horas_excedidas, revisar_disponibilidad_profesores
 from generar_genes import generar_cromosomas
 
 def funcion_costos(p_leves, p_duras):
@@ -11,8 +11,8 @@ def funcion_costos(p_leves, p_duras):
 
 # obtener p_leves y p_duras de un cromosoma
 def costo_cromosoma(cromosoma):
-    p_leves = verificar_horarios_continuos(cromosoma) + verificar_solapamientos_cromosoma(cromosoma)
-    p_duras = verificar_horas(cromosoma)
+    p_leves = verificar_horarios_continuos(cromosoma) + revisar_horarios_semestres(cromosoma, "UDF.csv")
+    p_duras = verificar_horas(cromosoma) + verificar_solapamientos_cromosoma(cromosoma) + revisar_horarios_colision(cromosoma) + contabilizar_horas(cromosoma) + revisar_horas_excedidas(cromosoma,???) + revisar_disponibilidad_profesores(cromosoma, ???)
     return funcion_costos(p_leves, p_duras)
 
 # # Genera la población
