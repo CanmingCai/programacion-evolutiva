@@ -75,6 +75,14 @@ def revisar_horarios_semestres(diccionarios, archivo_csv):
                     pen=1
     return pen
 ############################################################################################################
+# Buscar que no haya clase los miércoles
+def revisar_miercoles(arreglo):
+    pen=0
+    for diccionario in arreglo:
+        hora_inicio = diccionario["Hora_inicio"]
+        if hora_inicio[2] != "00:00":
+            pen = 1
+    return pen
 
 
 
@@ -103,6 +111,7 @@ def revisar_horarios_semestres(diccionarios, archivo_csv):
 #Genera la población
 file1 = "Agosto-Diciembre.csv"
 poblacion1 = [generar_cromosomas(file1) for _ in range(2)]
+print(poblacion1)
 
 # Evaluar la población
 penalizaciones = []  # Initialize an empty list for penalizaciones
