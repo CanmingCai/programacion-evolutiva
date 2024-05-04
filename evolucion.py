@@ -4,6 +4,7 @@ import csv
 import time
 from generar_genes import generar_cromosomas
 from costos import costo_cromosoma
+import matplotlib.pyplot as plt
 
 lista_profesor_materia = ['Victor Manion', 'Juan Alvarado', 'Roberto Leyva', 'Mauricio Paletta', 'Yerly Flores', 'Jaime Lopez', 'Jorge Rodriguez', 'Jose Aguilera', 'Luis Guadarrama', 'Pedro Hernandez', 'Maria Mirafuentes', 'Roberto Vera', 'Octavio Silva', 'Fernando Ruiz', 'Ivan Olmos', 'Israel Tabarez']
 periodos = [["P1,P2,P3"], ["P1,P2"], ["P2,P3"], ["P1"], ["P2"], ["P3"]]
@@ -11,10 +12,10 @@ UF =  ["TC1027", "TC1028", "TC1029", "TC1030", "TC1031", "TC1032", "TC1033", "TC
 bloques = { "TC1001B": ["TC1001B-1", "TC1001B-2", "TC1001B-3", "TC1001B-4", "TC1001B-5", "TC1001B-6", "TC1001B-7"],
             "TC1002B": ["TC1002B-1", "TC1002B-2", "TC1002B-3", "TC1002B-4", "TC1002B-5", "TC1002B-6", "TC1002B-7"],
             "TC1004B": ["TC1004B-1", "TC1004B-2", "TC1004B-3", "TC1004B-4", "TC1004B-5", "TC1004B-6", "TC1004B-7", "TC1004B-8", "TC1004B-9"],
-            "TC1005B": ["TC1005B-1", "TC1005B-2", "TC1005B-3", "TC1005B-4", "TC1005B-5", "TC1005B-6", "TC1005B-7", "TC1005B-8"],
-            "TC1006B": ["TC1006B-1", "TC1006B-2", "TC1006B-3"],
-            "TC1007B": ["TC1007B-1", "TC1007B-2", "TC1007B-3", "TC1007B-4", "TC1007B-5", "TC1007B-6"],
-            "TC1008B": ["TC1008B-1", "TC1008B-2", "TC1008B-3", "TC1008B-4", "TC1008B-5", "TC1008B-6", "TC1008B-7"],
+            "TC2005B": ["TC1005B-1", "TC1005B-2", "TC1005B-3", "TC1005B-4", "TC1005B-5", "TC1005B-6", "TC1005B-7", "TC1005B-8"],
+            "TC2006B": ["TC1006B-1", "TC1006B-2", "TC1006B-3"],
+            "TC2007B": ["TC1007B-1", "TC1007B-2", "TC1007B-3", "TC1007B-4", "TC1007B-5", "TC1007B-6"],
+            "TC2008B": ["TC1008B-1", "TC1008B-2", "TC1008B-3", "TC1008B-4", "TC1008B-5", "TC1008B-6", "TC1008B-7"],
             "TC3002B": ["TC3002B-1", "TC3002B-2", "TC3002B-3", "TC3002B-4"],
             "TC3003B": ["TC3003B-1", "TC3003B-2", "TC3003B-3", "TC3003B-4"],
             "TC3004B": ["TC3004B-1", "TC3004B-2", "TC3004B-3", "TC3004B-4", "TC3004B-5"],
@@ -119,12 +120,12 @@ def mutacion(cromosoma):
         #print("Error: No se generaron genes para mutar")
         return hijo
     
-    print("Genes a mutar:", [cromosoma[i] for i in genes_mutar])
+    #print("================= Genes a mutar: ===============", [cromosoma[i] for i in genes_mutar])
     print("")
     #aleatoria eleige un atributo para mutar: Mutación de UF, Mutación de Periodo, Mutación de Profesor, Mutación Hora Inicio, Mutación Hora Fin
     atributo = np.random.randint(0, 5)
     if atributo == 0:
-        print("============================ se mudo en UF ===========================")
+        #print("============================ se mudo en UF ===========================")
         if hijo[genes_mutar[0]] in UF:
             #si grupo de la materia es 1 en array de cursos, se queda en 1
             for curso in cursos:
@@ -140,13 +141,13 @@ def mutacion(cromosoma):
                     #print("se mutó en bloque")
             
     elif atributo == 1:
-        print("============================ se mudo en periodo ===========================")
+        #print("============================ se mudo en periodo ===========================")
         hijo[genes_mutar[0]]["Periodo"] = random.choice(periodos)
     elif atributo == 2:
-        print("============================ se mudo en profesor ===========================")
+        #print("============================ se mudo en profesor ===========================")
         hijo[genes_mutar[0]]['Profesor'] = random.choice(lista_profesor_materia)
     elif atributo == 3:
-        print("============================ se mudo en hora inicio ===========================")
+        #print("============================ se mudo en hora inicio ===========================")
         hora_inicio = [] 
         # de 7 a 19 horas
         for i in range(5):
@@ -164,9 +165,9 @@ def mutacion(cromosoma):
     return hijo
 
  
-# min_costo_cromosoma_1 = [0, 0, 0, 0, 0]
-# min_costo_cromosoma_2 = [1, 1, 1, 1, 1]
-#hijo = cruce_uniforme(min_costo_cromosoma_1, min_costo_cromosoma_2)
+min_costo_cromosoma_1 = [0, 0, 0, 0, 0]
+min_costo_cromosoma_2 = [1, 1, 1, 1, 1]
+hijo = cruce_uniforme(min_costo_cromosoma_1, min_costo_cromosoma_2)
 
 # hacer cruce uniforme y llenar los hijo en la nueva población de tamaño 100 y evaluar el costo de cada hijo
 # new_poblacion = []
@@ -207,7 +208,7 @@ def mutacion(cromosoma):
 
 # aleatoria elegir cruce uniforme o mutación para evolucionar la población
 def seleccion_operador():
-    operador = np.random.randint(0, 2)
+    operador = np.random.randint(0, 5)
     if operador == 0:
         return "cruce_uniforme"
     else:
@@ -231,20 +232,50 @@ def evolucion(poblacion, costo):
         else:
             padre = selec_min_cromosoma(1)
             hijo = mutacion(padre)
-            print(" ========================= cromosomas Mutante: =======================")
-            print(hijo)
+            # print(" ========================= cromosomas Mutante: =======================")
+            # print(hijo)
             costo_hijo = costo_cromosoma(hijo)
             nueva_poblacion.append(hijo)
             nueva_costo.append(costo_hijo)
     return nueva_poblacion, nueva_costo
 
+def remplazar_mejores_cromosomas(poblacion, costo, nueva_poblacion, nueva_costo):
+    # obtener los 25 mejores cromosomas de la población
+    indices_mejores = np.argsort(costo)[:25]
+    mejores_cromosomas = [poblacion[i] for i in indices_mejores]
+    mejores_costos = [costo[i] for i in indices_mejores]
+
+    # obtener los 25 peores cromosomas de la nueva población
+    indices_peores = np.argsort(nueva_costo)[-25:]
+    peores_cromosomas = [nueva_poblacion[i] for i in indices_peores]
+    peores_costos = [nueva_costo[i] for i in indices_peores]
+
+    # reemplazar los peores cromosomas de la población por los mejores cromosomas de la nueva población
+    for i, indice in enumerate(indices_peores):
+        poblacion[indice] = mejores_cromosomas[i]
+        costo[indice] = mejores_costos[i]
+    return poblacion, costo
+
+# repetir 5 veces la evolución de la población, tambien sumar el costo de la población en cada iteración y graficar el costo
 
 
-# repetir 5 veces la evolución de la población
-for i in range(10):
-    poblacion1, costo = evolucion(poblacion1, costo)
+
+array_costo = []
+for i in range(25):
+    nueva_poblacion, nueva_costo = evolucion(poblacion1, costo)
+    nueva_costo, nueva_costo = remplazar_mejores_cromosomas(poblacion1, costo, nueva_poblacion, nueva_costo)
+    poblacion1 = nueva_poblacion
+    costo = nueva_costo
     print("costo de la población en la iteración", i)
+    costo_total = sum(costo)
+    array_costo.append(costo_total)
     for i in range(len(costo)):
         print(i, costo[i])
     print("")
 
+#graficar con matplotlib
+plt.plot(array_costo)
+plt.xlabel("Iteraciones")
+plt.ylabel("Costo")
+plt.title("Costo de la población en cada iteración")
+plt.show()

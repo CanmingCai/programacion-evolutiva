@@ -158,11 +158,13 @@ from datetime import datetime, time
 def contabilizar_horas(diccionarios):
     horas_por_uf = {}
     for diccionario in diccionarios:
-        clave_uf, grupo = diccionario['UF']  # Acceder a la clave y al grupo de la UF
+        #la estructura de UF es {'UF': ['TC1028', 8]}
+        clave_uf = diccionario['UF'][0]
+        grupo = diccionario['UF'][1]
         horas_totales = 0
         horario_inicio = diccionario['Hora_inicio']
         horario_fin = diccionario['Hora_fin']
-        print(clave_uf, grupo )
+        #print(clave_uf, grupo )
         for dia in range(5):  # Lunes a viernes
             hora_inicio =datetime.strptime(horario_inicio[dia], '%H:%M').time() 
             hora_fin =datetime.strptime(horario_fin[dia], '%H:%M').time() 
@@ -186,10 +188,10 @@ def contabilizar_horas(diccionarios):
 def revisar_horas_excedidas(diccionarios, archivo_csv):
     horas_por_uf=contabilizar_horas(diccionarios)
     pen=0
-    with open(archivo_csv, newline='') as csvfile:
+    with open(archivo_csv, newline='', encoding='utf-8-sig') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            clave_uf_csv = row['ï»¿Clave'].strip()  # Eliminar espacios en blanco alrededor de la clave de la UF
+            clave_uf_csv = row['Clave'].strip()  # Eliminar espacios en blanco alrededor de la clave de la UF
             periodos=0
             if row['P1']=="X":
                 periodos+=1
@@ -201,7 +203,7 @@ def revisar_horas_excedidas(diccionarios, archivo_csv):
             for clave_uf, horas_contadas in horas_por_uf.items():
                 if clave_uf[0] == clave_uf_csv:
                     if horas_contadas > horas_csv:
-                        print(f"¡Alerta! Horas excedidas para la UF {clave_uf[0]}, grupo {clave_uf[1]}. Horas contadas: {horas_contadas}, horas permitidas: {horas_csv}")
+                        #print(f"¡Alerta! Horas excedidas para la UF {clave_uf[0]}, grupo {clave_uf[1]}. Horas contadas: {horas_contadas}, horas permitidas: {horas_csv}")
                         pen=1
     return pen
 
@@ -238,11 +240,11 @@ def revisar_disponibilidad_profesores(diccionarios):
         if tipo=="B":
             uf_clave_split = uf_clave.split('-')[0]
             archivo_csv=uf_clave_split+"-Profesores.csv"
-            columna='ï»¿Tema'
+            columna='Tema'
             uf_clave= uf_clave.split('-')[1]
            
 
-        with open(archivo_csv, newline='', encoding='latin-1') as csvfile:
+        with open(archivo_csv, newline='', encoding='utf-8-sig') as csvfile:
             reader = csv.DictReader(csvfile)
             profesor_disponible = False
             
@@ -255,7 +257,7 @@ def revisar_disponibilidad_profesores(diccionarios):
                         break
                             
             if not profesor_disponible:
-                print(f"¡Alerta! El profesor {profesor} no está disponible para dar clases en la UF {uf_clave}.")
+                #print(f"¡Alerta! El profesor {profesor} no está disponible para dar clases en la UF {uf_clave}.")
                 pen = 1
             
     return pen

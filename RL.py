@@ -146,7 +146,7 @@ def verificar_duraciones(cromosoma):
 #Genera la población
 file1 = "Agosto-Diciembre.csv"
 poblacion1 = [generar_cromosomas(file1) for _ in range(2)]
-print(poblacion1)
+#print(poblacion1)
 
 # Evaluar la población
 penalizaciones = []  # Initialize an empty list for penalizaciones

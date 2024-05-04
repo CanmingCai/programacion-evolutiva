@@ -1,7 +1,7 @@
 import random
-from RL import verificar_horarios_continuos, revisar_horarios_semestres
-from RD import verificar_solapamientos_cromosoma, verificar_horas, revisar_horarios_colision, contabilizar_horas, revisar_horas_excedidas, revisar_disponibilidad_profesores
-from generar_genes import generar_cromosomas
+from RL import verificar_horarios_continuos, revisar_horarios_semestres, revisar_miercoles, verificar_duraciones
+from RD import verificar_solapamientos_cromosoma, verificar_horas, revisar_horarios_colision, revisar_horas_excedidas, revisar_disponibilidad_profesores, verificar_franja_horarios, validar_horario
+from generar_genes import generar_cromosomas, horario_profesor
 
 def funcion_costos(p_leves, p_duras):
     sumatoria_leves = sum(random.uniform(0.5, 1.5) for _ in range(p_leves))
@@ -11,9 +11,8 @@ def funcion_costos(p_leves, p_duras):
 
 # obtener p_leves y p_duras de un cromosoma
 def costo_cromosoma(cromosoma):
-    p_leves = verificar_horarios_continuos(cromosoma) + revisar_horarios_semestres(cromosoma, "UDF.csv")
-    p_duras = verificar_horas(cromosoma) + verificar_solapamientos_cromosoma(cromosoma) + revisar_horarios_colision(cromosoma)  
-    #+ revisar_horas_excedidas(cromosoma,???) + revisar_disponibilidad_profesores(cromosoma, ???)
+    p_leves = verificar_horarios_continuos(cromosoma) + revisar_horarios_semestres(cromosoma, "UDF.csv") + revisar_miercoles(cromosoma) + verificar_duraciones(cromosoma)
+    p_duras = verificar_horas(cromosoma) + verificar_solapamientos_cromosoma(cromosoma) + revisar_horarios_colision(cromosoma)  + revisar_horas_excedidas(cromosoma, "UDF.csv") + revisar_disponibilidad_profesores(cromosoma) + verificar_franja_horarios(horario_profesor,cromosoma) + validar_horario(cromosoma)
     return funcion_costos(p_leves, p_duras)
 
 # # Genera la población
